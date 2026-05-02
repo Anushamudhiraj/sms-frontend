@@ -1,0 +1,66 @@
+.screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #6366f1, #7c3aed);
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 350px;
+  text-align: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: #6366f1;
+  color: white;
+  border: none;
+  margin-top: 10px;
+}
+
+.link {
+  margin-top: 10px;
+  cursor: pointer;
+  color: #4f46e5;
+}
+
+.dashboard {
+  padding: 20px;
+  background: #f9fafb;
+  min-height: 100vh;
+}
+
+.section {
+  background: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.grid {
+  display: flex;
+  gap: 15px;
+}
+
+.box {
+  background: #eef2ff;
+  padding: 15px;
+  border-radius: 10px;
+}
