@@ -3,64 +3,86 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #6366f1, #7c3aed);
+
+  /* ✅ clean gradient (no image) */
+  background: linear-gradient(135deg, #7f53ac, #647dee);
 }
 
 .card {
-  background: white;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
   padding: 30px;
-  border-radius: 12px;
-  width: 350px;
-  text-align: center;
+  border-radius: 16px;
+  width: 360px;
 }
 
 .title {
-  font-size: 24px;
-  font-weight: bold;
+  text-align: center;
+  color: white;
   margin-bottom: 20px;
+  font-size: 24px;
 }
 
 .input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
+  border-radius: 8px;
+  border: none;
 }
+
+.subtitle {
+  color: white;
+  margin: 10px 0;
+}
+
+/* ✅ PERFECT ALIGNMENT */
+.platforms {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.platform-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+/* checkbox spacing fix */
+.platform-item input {
+  width: 16px;
+  height: 16px;
+}
+
+/* icons */
+.icon {
+  font-size: 18px;
+}
+
+/* brand colors */
+.insta { color: #E1306C; }
+.fb { color: #1877F2; }
+.li { color: #0A66C2; }
+.tw { color: #1DA1F2; }
+.yt { color: #FF0000; }
+.pt { color: #E60023; }
 
 .btn {
   width: 100%;
   padding: 10px;
-  background: #6366f1;
-  color: white;
-  border: none;
-  margin-top: 10px;
+  margin-top: 15px;
+  background: white;
+  color: #5f2c82;
+  border-radius: 8px;
+  font-weight: bold;
 }
 
 .link {
+  text-align: center;
+  color: white;
   margin-top: 10px;
   cursor: pointer;
-  color: #4f46e5;
-}
-
-.dashboard {
-  padding: 20px;
-  background: #f9fafb;
-  min-height: 100vh;
-}
-
-.section {
-  background: white;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 10px;
-}
-
-.grid {
-  display: flex;
-  gap: 15px;
-}
-
-.box {
-  background: #eef2ff;
-  padding: 15px;
-  border-radius: 10px;
 }

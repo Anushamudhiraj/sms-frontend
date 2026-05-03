@@ -3,26 +3,20 @@ export default function ClientDashboard() {
     <div className="dashboard">
       <h2>Client Dashboard</h2>
 
-      <div className="section">
-        <h3>Connected Platforms</h3>
-        <p>Instagram • Facebook • LinkedIn</p>
-      </div>
-
-      <div className="section">
-        <h3>Analytics</h3>
-        <div className="grid">
-          <Card title="Likes" value="1200" />
-          <Card title="Comments" value="300" />
-          <Card title="Reach" value="5000" />
-        </div>
+      <div className="grid">
+        <Card title="Posts" value="24" icon="📝" />
+        <Card title="Likes" value="1.2K" icon="❤️" />
+        <Card title="Reach" value="5K" icon="📈" />
+        <Card title="Analytics" value="View" icon="📊" />
       </div>
     </div>
   );
 }
 
-function Card({ title, value }) {
+function Card({ title, value, icon }) {
   return (
     <div className="box">
+      <div className="icon">{icon}</div>
       <h4>{title}</h4>
       <p>{value}</p>
     </div>
