@@ -1,5 +1,13 @@
 import API from "./api";
 
-export const loginUser = (data) => API.post("/auth/login/", data);
+// 🔹 Signup
+export const signup = async (data) => {
+  const res = await API.post("/signup/", data);
+  return res.data;
+};
 
-export const registerUser = (data) => API.post("/auth/register/", data);
+// 🔹 Login
+export const login = async (data) => {
+  const res = await API.post("/login/", data);
+  return res.data;
+};
