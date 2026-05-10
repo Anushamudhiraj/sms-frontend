@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Insights - Client Portal</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for better UI feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e4e2e5;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c5c6cf;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#8293b8",
+                    "surface-bright": "#fbf8fc",
+                    "on-primary-fixed": "#081b3a",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#ffddb1",
+                    "inverse-surface": "#303033",
+                    "on-primary-fixed-variant": "#364768",
+                    "on-secondary-fixed-variant": "#484740",
+                    "tertiary-container": "#3e2700",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#b6c6ef",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#dbd9dc",
+                    "tertiary-fixed-dim": "#e8c08a",
+                    "surface-container-high": "#e9e7eb",
+                    "outline": "#75777f",
+                    "on-surface": "#1b1b1e",
+                    "on-tertiary-fixed-variant": "#5d4217",
+                    "on-surface-variant": "#44474e",
+                    "background": "#fbf8fc",
+                    "tertiary": "#231400",
+                    "outline-variant": "#c5c6cf",
+                    "surface": "#fbf8fc",
+                    "primary-container": "#1a2b4b",
+                    "secondary-fixed": "#e6e2d8",
+                    "on-tertiary-container": "#b08d5b",
+                    "surface-container": "#efedf0",
+                    "inverse-on-surface": "#f2f0f3",
+                    "on-tertiary-fixed": "#291800",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#b6c6ef",
+                    "primary-fixed": "#d8e2ff",
+                    "on-background": "#1b1b1e",
+                    "primary": "#031635",
+                    "on-secondary-fixed": "#1c1c16",
+                    "secondary-fixed-dim": "#cac6bd",
+                    "surface-container-low": "#f5f3f6",
+                    "surface-variant": "#e4e2e5",
+                    "secondary-container": "#e6e2d8",
+                    "surface-tint": "#4e5e81",
+                    "surface-container-highest": "#e4e2e5",
+                    "secondary": "#605e57",
+                    "on-secondary-container": "#66645d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "container-padding": "24px",
+                    "unit": "4px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "gutter": "20px"
+            },
+            "fontFamily": {
+                    "stat-lg": ["Manrope"],
+                    "headline-xl": ["Manrope"],
+                    "label-bold": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Manrope"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "stat-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-xl": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SIDEBAR -->
+<!-- Applying style_component_shape: fixed left-0 top-0 h-full w-60 -->
+<!-- Applying style_bg_color: bg-primary -->
+<!-- Applying style_shell_layout: flex flex-col h-full py-xl -->
+<aside class="fixed left-0 top-0 h-full w-60 bg-primary flex flex-col py-xl z-50">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-md text-headline-md text-primary-fixed font-extrabold tracking-tight">Client Portal</h1>
+<p class="font-body-md text-body-md text-on-primary-container">Premium Management</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard (Inactive) -->
+<a class="text-on-primary-container hover:text-primary-fixed-dim rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<!-- Scheduler (Inactive) -->
+<a class="text-on-primary-container hover:text-primary-fixed-dim rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-body-md text-body-md">Scheduler</span>
+</a>
+<!-- Analytics (Inactive) -->
+<a class="text-on-primary-container hover:text-primary-fixed-dim rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+<!-- AI Insights (Active) -->
+<!-- style_active_navigation: bg-on-primary-fixed-variant text-on-primary-fixed rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-2 -->
+<a class="bg-on-primary-fixed-variant text-on-primary-fixed rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-2" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-body-md text-body-md">AI Insights</span>
+</a>
+<!-- Settings (Inactive) -->
+<a class="text-on-primary-container hover:text-primary-fixed-dim rounded-lg mx-2 my-1 flex items-center gap-3 px-4 py-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-2">
+<a class="text-on-primary-container hover:text-primary-fixed-dim rounded-lg flex items-center gap-3 px-4 py-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+<a class="text-on-primary-container hover:text-primary-fixed-dim rounded-lg flex items-center gap-3 px-4 py-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md text-body-md">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- MAIN CANVAS -->
+<main class="ml-60 min-h-screen">
+<!-- TOP APP BAR -->
+<!-- style_shell_layout: flex justify-between items-center h-16 px-lg ml-60 (Adjusted ml for sidebar) -->
+<header class="bg-surface sticky top-0 z-40 flex justify-between items-center h-16 px-lg border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Management Dashboard</h2>
+</div>
+<div class="flex items-center gap-lg">
+<button class="text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-secondary-container overflow-hidden">
+<img alt="Manager profile" data-alt="A professional headshot of a social media manager in a clean office environment. The subject is a person in their late twenties with a friendly, confident expression. The lighting is bright and airy, reflecting a modern light-mode interface aesthetic. The background is softly blurred with hints of plants and warm wooden textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpKb5Zc9FaxanP6mckV1bHqZnwl5kBbLi-3b4ee-PqFr7EvGixVEniGzPFzePsK1iqh-8tsnLahshs4Xbbkp8dQLZQpTWOP8ey6CxrmrescaxUJZSib6J_2-wFKU1iuWwESnlFPE_VVF-kW8_gSf9JqnEd77hY08wtT04mu_DML9bPGy61P5S7trmuXSasqDC5jtg5TbkpudJmxb-HKa5WJwW0uuh1E2H0TVncQED0pn7XNvxrzjYDbtmBmUCw33LFhm8dbP-uYYeJ"/>
+</div>
+</div>
+</header>
+<!-- CONTENT AREA -->
+<div class="p-xl max-w-7xl mx-auto space-y-xl">
+<!-- PAGE HEADER -->
+<section>
+<h1 class="font-headline-xl text-headline-xl text-on-surface">AI Insights</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-xs">Generate AI-powered captions, insights, hashtags, and visual content for your social media.</p>
+</section>
+<!-- BENTO LAYOUT FOR CONFIG AND RESULTS -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- LEFT CONFIG PANEL -->
+<aside class="lg:col-span-4 space-y-lg">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-[0px_4px_12px_rgba(0,0,0,0.03)]">
+<div class="space-y-md">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Social Platforms</h3>
+<div class="grid grid-cols-3 gap-sm">
+<button class="flex flex-col items-center justify-center p-md rounded-lg border border-outline-variant hover:border-primary hover:bg-primary-fixed transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="photo_camera">photo_camera</span>
+<span class="font-label-bold text-[10px] mt-xs">Instagram</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md rounded-lg border border-outline-variant hover:border-primary hover:bg-primary-fixed transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="work">work</span>
+<span class="font-label-bold text-[10px] mt-xs">LinkedIn</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md rounded-lg border border-outline-variant hover:border-primary hover:bg-primary-fixed transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="close">close</span>
+<span class="font-label-bold text-[10px] mt-xs">Twitter/X</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md rounded-lg border border-outline-variant hover:border-primary hover:bg-primary-fixed transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="music_note">music_note</span>
+<span class="font-label-bold text-[10px] mt-xs">TikTok</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md rounded-lg border border-outline-variant hover:border-primary hover:bg-primary-fixed transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="facebook">social_leaderboard</span>
+<span class="font-label-bold text-[10px] mt-xs">Facebook</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md rounded-lg border border-outline-variant hover:border-primary hover:bg-primary-fixed transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="play_circle">play_circle</span>
+<span class="font-label-bold text-[10px] mt-xs">YouTube</span>
+</button>
+</div>
+</div>
+<div class="mt-lg space-y-md">
+<div>
+<label class="font-label-bold text-label-bold text-on-surface block mb-xs">Tone of Voice</label>
+<select class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm font-body-md focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+<option>Professional</option>
+<option>Casual</option>
+<option>Witty</option>
+<option>Promotional</option>
+</select>
+</div>
+<div>
+<label class="font-label-bold text-label-bold text-on-surface block mb-xs">Caption Length</label>
+<select class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm font-body-md focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+<option>Short (1-2 sentences)</option>
+<option>Medium (1 paragraph)</option>
+<option>Long (Story format)</option>
+</select>
+</div>
+<div>
+<label class="font-label-bold text-label-bold text-on-surface block mb-xs">Target Audience</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm font-body-md focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="e.g. Startup founders in tech" type="text"/>
+</div>
+<div>
+<label class="font-label-bold text-label-bold text-on-surface block mb-xs">Key Message / Keywords</label>
+<textarea class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm font-body-md focus:ring-2 focus:ring-primary focus:border-primary outline-none resize-none" placeholder="What are the main points of this post?" rows="3"></textarea>
+</div>
+<div>
+<label class="font-label-bold text-label-bold text-on-surface block mb-xs">Add Image Prompt</label>
+<textarea class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm font-body-md focus:ring-2 focus:ring-primary focus:border-primary outline-none resize-none" placeholder="Describe the image you want AI to generate..." rows="3"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary font-headline-md py-md rounded-lg hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-primary/20">
+                                Generate AI Content
+                            </button>
+</div>
+</div>
+<!-- TRENDING HASHTAGS -->
+</aside>
+<!-- RIGHT RESULTS PANEL -->
+<div class="lg:col-span-8 space-y-lg">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface">AI Generated Results</h2>
+<span class="text-on-surface-variant font-body-md">Showing 3 variants</span>
+</div>
+<!-- RESULT CARD 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-[0px_4px_12px_rgba(0,0,0,0.03)] space-y-lg">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-sm">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-sm py-unit rounded text-[10px] font-bold uppercase tracking-wider">Product Promotion</span>
+<span class="flex items-center gap-xs font-label-bold text-on-surface-variant">
+<span class="h-2 w-2 rounded-full bg-on-tertiary-container"></span>
+                                    High Engagement
+                                </span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-stat-lg text-primary text-2xl">92%</span>
+<span class="text-on-surface-variant font-label-bold">Score</span>
+</div>
+</div>
+<p class="font-body-lg text-on-surface leading-relaxed">
+                            Stop wasting hours on manual scheduling! Our latest platform update brings seamless integration with all your favorite tools. Experience the future of management today and reclaim your creative time. ✨ #EfficiencyUnleashed
+                        </p>
+<div class="flex flex-wrap gap-xs">
+<span class="text-primary font-label-bold">#WorkflowAutomation</span>
+<span class="text-primary font-label-bold">#SaaSProductivity</span>
+<span class="text-primary font-label-bold">#CreativeFreedom</span>
+</div>
+<!-- Image Preview Grid -->
+<div class="grid grid-cols-2 gap-md pt-md border-t border-outline-variant">
+<div class="relative group aspect-square rounded-lg overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="A futuristic, high-tech workspace with multiple glowing screens displaying abstract data visualizations. The lighting is soft teal and deep navy, reflecting a professional SaaS environment. A sleek laptop sits on a minimal white desk with a small green succulent plant in the corner. The overall mood is clean, organized, and technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH1urr-DxNU59IyotaHJLRTPmnw0OriTRxrhs08gIXQ7psqxSZL7X-rXXOMSYHt1d2TsMNah0ruJZcZQIBwF-CErLBiTxgICwOtLF5r6z51Tg5F89RHMjchKMuji8IfUdOke19QVewHnelh2HLSFPLGKf0n0wWbgP4_Ta5k8nuWgiwL8fjhZXAY7572cbfBjDY7zmD1r8H4ZtQB-MGqr-6iC37tNBE45DS220342Q9zps1mCwF1uqVkRNLj5oFnaPJizVl0yKCgGib"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-sm">
+<button class="bg-white text-primary p-sm rounded-full shadow-lg" title="Download">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+<button class="bg-white text-primary p-sm rounded-full shadow-lg" title="Regenerate">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+</div>
+</div>
+<div class="relative group aspect-square rounded-lg overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="A collaborative business meeting in a bright, glass-walled conference room. Diverse professionals are engaged in a positive discussion around a modern white table. The aesthetic is professional and corporate, with high-key natural lighting and a palette of crisp whites, soft grays, and deep navy accents. The atmosphere is one of productive innovation and professional success." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAavRCOVGj7eUNUduyqnjieP9o5AJOu025l-3YmPtLfDiNF9M9nJjwV77ofe15KY1wyPk-lzHWX4FUbjDUoLqiz4xwzFgL1JxxOBAPRc66MiUlquV4FFdM_QYHKOlvYCrOMhaqadmFinTZS2TCCyuzqkuC33KtqPYrkIGhDDqzAelyjzQ0tQ8_FdhbcA8hxMx45mc1AXPFbgknQUrWl9TFM9olpUSwj9mecfnGnmeVm5GgAlzA7rr0CeYQgjiz4WmTwlLOjSq-xRz-"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-sm">
+<button class="bg-white text-primary p-sm rounded-full shadow-lg" title="Download">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+<button class="bg-white text-primary p-sm rounded-full shadow-lg" title="Regenerate">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-md pt-md">
+<button class="flex-1 bg-primary text-on-primary py-sm rounded-lg font-label-bold flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="content_copy">content_copy</span>
+                                Copy Text
+                            </button>
+<button class="px-md py-sm border border-outline-variant rounded-lg text-on-surface hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+<button class="px-md py-sm border border-outline-variant rounded-lg text-on-surface hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</article>
+<!-- RESULT CARD 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-[0px_4px_12px_rgba(0,0,0,0.03)] space-y-lg">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-sm">
+<span class="bg-secondary-container text-on-secondary-container px-sm py-unit rounded text-[10px] font-bold uppercase tracking-wider">Business Growth Tip</span>
+<span class="flex items-center gap-xs font-label-bold text-on-surface-variant">
+<span class="h-2 w-2 rounded-full bg-on-tertiary-container"></span>
+                                    Educational
+                                </span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-stat-lg text-primary text-2xl">88%</span>
+<span class="text-on-surface-variant font-label-bold">Score</span>
+</div>
+</div>
+<p class="font-body-lg text-on-surface leading-relaxed">
+                            The secret to scaling isn't working harder, it's working smarter. 💡 Focus on building systems that run themselves, and watch your business thrive. Swipe to see our top 3 automation hacks for this quarter. 📈
+                        </p>
+<div class="flex flex-wrap gap-xs">
+<span class="text-primary font-label-bold">#ScalingUp</span>
+<span class="text-primary font-label-bold">#BusinessSystems</span>
+<span class="text-primary font-label-bold">#EntrepreneurMindset</span>
+</div>
+<div class="flex items-center gap-md pt-md">
+<button class="flex-1 bg-primary text-on-primary py-sm rounded-lg font-label-bold flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="content_copy">content_copy</span>
+                                Copy Text
+                            </button>
+<button class="px-md py-sm border border-outline-variant rounded-lg text-on-surface hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+<button class="px-md py-sm border border-outline-variant rounded-lg text-on-surface hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</article>
+<!-- RESULT CARD 3 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-[0px_4px_12px_rgba(0,0,0,0.03)] space-y-lg">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-sm">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-sm py-unit rounded text-[10px] font-bold uppercase tracking-wider">Event Announcement</span>
+<span class="flex items-center gap-xs font-label-bold text-on-surface-variant">
+<span class="h-2 w-2 rounded-full bg-on-tertiary-container"></span>
+                                    Time Sensitive
+                                </span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-stat-lg text-primary text-2xl">95%</span>
+<span class="text-on-surface-variant font-label-bold">Score</span>
+</div>
+</div>
+<p class="font-body-lg text-on-surface leading-relaxed">
+                            Join us next Tuesday for our exclusive webinar on "The Future of AI in Content Creation." Learn from industry experts and get a first look at our upcoming feature roadmap. Limited spots available! 🔗 Link in bio to register.
+                        </p>
+<div class="flex flex-wrap gap-xs">
+<span class="text-primary font-label-bold">#WebinarAlert</span>
+<span class="text-primary font-label-bold">#FutureOfTech</span>
+<span class="text-primary font-label-bold">#AIWorkshop</span>
+</div>
+<div class="flex items-center gap-md pt-md">
+<button class="flex-1 bg-primary text-on-primary py-sm rounded-lg font-label-bold flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="content_copy">content_copy</span>
+                                Copy Text
+                            </button>
+<button class="px-md py-sm border border-outline-variant rounded-lg text-on-surface hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+<button class="px-md py-sm border border-outline-variant rounded-lg text-on-surface hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</article>
+</div>
+</div>
+</div>
+</main>
+</body></html>

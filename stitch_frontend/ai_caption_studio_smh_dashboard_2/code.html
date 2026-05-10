@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Caption Studio - SMH Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#b08d5b",
+                      "primary-fixed": "#d8e2ff",
+                      "surface-container-high": "#e9e7eb",
+                      "on-primary-fixed-variant": "#364768",
+                      "tertiary-fixed-dim": "#e8c08a",
+                      "inverse-on-surface": "#f2f0f3",
+                      "surface-bright": "#fbf8fc",
+                      "error": "#ba1a1a",
+                      "primary-fixed-dim": "#b6c6ef",
+                      "surface-container": "#efedf0",
+                      "surface-container-highest": "#e4e2e5",
+                      "secondary-fixed-dim": "#cac6bd",
+                      "secondary": "#605e57",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c5c6cf",
+                      "surface-dim": "#dbd9dc",
+                      "inverse-primary": "#b6c6ef",
+                      "tertiary-fixed": "#ffddb1",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#fbf8fc",
+                      "on-tertiary-fixed-variant": "#5d4217",
+                      "secondary-container": "#e6e2d8",
+                      "background": "#fbf8fc",
+                      "surface-variant": "#e4e2e5",
+                      "on-tertiary-fixed": "#291800",
+                      "on-surface": "#1b1b1e",
+                      "inverse-surface": "#303033",
+                      "secondary-fixed": "#e6e2d8",
+                      "on-background": "#1b1b1e",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#4e5e81",
+                      "on-secondary-fixed": "#1c1c16",
+                      "surface-container-low": "#f5f3f6",
+                      "tertiary": "#231400",
+                      "on-primary-fixed": "#081b3a",
+                      "on-secondary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#44474e",
+                      "primary": "#031635",
+                      "on-secondary-fixed-variant": "#484740",
+                      "on-error-container": "#93000a",
+                      "outline": "#75777f",
+                      "primary-container": "#1a2b4b",
+                      "on-secondary-container": "#66645d",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-container": "#8293b8",
+                      "tertiary-container": "#3e2700"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "sm": "8px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "container-padding": "24px",
+                      "unit": "4px",
+                      "gutter": "20px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "headline-xl": ["Manrope"],
+                      "stat-lg": ["Manrope"],
+                      "body-md": ["Inter"],
+                      "headline-md": ["Manrope"],
+                      "label-bold": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-xl": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                      "stat-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { background-color: #fbf8fc; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[240px] bg-primary dark:bg-primary-container flex flex-col py-md px-md z-50">
+<div class="mb-xl px-sm">
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">SocialPro</h1>
+<p class="text-on-primary/60 text-[10px] uppercase tracking-wider font-bold">Agency Workspace</p>
+</div>
+<nav class="flex-1 space-y-sm">
+<a class="flex items-center gap-md p-sm rounded-lg text-on-primary/70 hover:text-on-primary hover:bg-primary-container/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg text-on-primary/70 hover:text-on-primary hover:bg-primary-container/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md">Clients</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg text-on-primary/70 hover:text-on-primary hover:bg-primary-container/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">schedule_send</span>
+<span class="font-body-md">Content Queue</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg text-on-primary/70 hover:text-on-primary hover:bg-primary-container/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-body-md">Analytics</span>
+</a>
+<!-- Active Navigation State for AI Caption Studio -->
+<a class="flex items-center gap-md p-sm rounded-lg bg-primary-container/20 dark:bg-primary-fixed/10 text-on-primary font-bold border-l-4 border-primary-fixed transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-body-md">AI Caption Studio</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg text-on-primary/70 hover:text-on-primary hover:bg-primary-container/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto p-md bg-primary-container/20 rounded-xl border border-white/5">
+<p class="text-on-primary text-[11px] font-bold mb-xs">Tokens Remaining</p>
+<div class="w-full bg-white/10 h-1 rounded-full overflow-hidden mb-xs">
+<div class="bg-primary-fixed w-3/4 h-full"></div>
+</div>
+<p class="text-on-primary/60 text-[10px]">7,540 / 10,000</p>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-240px)] bg-surface dark:bg-background border-b border-outline-variant dark:border-outline flex justify-between items-center h-16 px-lg z-40">
+<div class="flex items-center gap-md flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-body-md focus:ring-2 focus:ring-primary/20" placeholder="Search prompts or captions..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-sm rounded-full transition-all cursor-pointer active:scale-95">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-sm rounded-full transition-all cursor-pointer active:scale-95">help_outline</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded-lg transition-all">
+<div class="text-right">
+<p class="text-label-bold font-label-bold text-on-surface">Alex Rivera</p>
+<p class="text-[10px] text-on-surface-variant">Creative Director</p>
+</div>
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full border-2 border-primary-fixed" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-R6tJklLa_9KvMA7BDYyki05oW-6piGLGaRR3l1rTJ35ai2-npNWK5vUlCFYwJ0a8juCrktKtp3R1Fsz0iHAfoZQaJCOCrlS8Nq9cPWeUoTu-uWy6hVQ879MHXSekm1Abq-mn9ft1vuI88xiSFer61Hxg_l2E7snN-DlQz895KIVgRh-XU1HYksr4yDACmFcuZogAKFRcGBfVOCPXVakGuuPChXJwXCdLZz5kCtlw_bbTTyoe8u2xQYKAEnyHIJocq9SxHU2gWEEp"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-[240px] pt-16 min-h-screen">
+<div class="p-xl max-w-7xl mx-auto">
+<!-- Page Header Section -->
+<div class="flex justify-between items-end mb-xl">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-primary mb-xs">AI Caption Studio</h2>
+<p class="text-on-surface-variant font-body-md">Craft high-converting social media copy in seconds with AI.</p>
+</div>
+<div class="flex gap-sm">
+<button class="px-md py-sm bg-white border border-primary text-primary font-label-bold rounded-lg hover:bg-surface-container-low transition-all">
+                        View History
+                    </button>
+<button class="px-md py-sm bg-primary text-on-primary font-label-bold rounded-lg hover:shadow-lg transition-all flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        New Project
+                    </button>
+</div>
+</div>
+<!-- Bento Layout Content -->
+<div class="grid grid-cols-12 gap-lg">
+<!-- Left Panel: Input Form -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-lg">
+<section class="bg-white rounded-xl p-lg shadow-[0px_4px_12px_rgba(0,0,0,0.03)] border border-outline-variant/30">
+<h3 class="font-headline-md text-headline-md text-primary mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container">tune</span>
+                            Configure Generation
+                        </h3>
+<form class="space-y-md">
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface mb-xs">Social Platform</label>
+<div class="grid grid-cols-4 gap-xs">
+<button class="flex flex-col items-center justify-center p-sm border-2 border-primary-fixed bg-primary-fixed/10 rounded-xl text-primary" type="button">
+<span class="material-symbols-outlined mb-1">brand_family</span>
+<span class="text-[10px] font-bold">Instagram</span>
+</button>
+<button class="flex flex-col items-center justify-center p-sm border border-outline-variant rounded-xl text-on-surface-variant hover:border-primary-fixed transition-colors" type="button">
+<span class="material-symbols-outlined mb-1">work</span>
+<span class="text-[10px] font-bold">LinkedIn</span>
+</button>
+<button class="flex flex-col items-center justify-center p-sm border border-outline-variant rounded-xl text-on-surface-variant hover:border-primary-fixed transition-colors" type="button">
+<span class="material-symbols-outlined mb-1">close</span>
+<span class="text-[10px] font-bold">X (Twitter)</span>
+</button>
+<button class="flex flex-col items-center justify-center p-sm border border-outline-variant rounded-xl text-on-surface-variant hover:border-primary-fixed transition-colors" type="button">
+<span class="material-symbols-outlined mb-1">play_circle</span>
+<span class="text-[10px] font-bold">TikTok</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface mb-xs">Tone of Voice</label>
+<select class="w-full rounded-lg border-outline-variant bg-surface-container-lowest text-body-md focus:border-primary focus:ring-0">
+<option>Professional</option>
+<option>Witty &amp; Fun</option>
+<option>Casual</option>
+<option>Inspirational</option>
+<option>Bold/Fearless</option>
+</select>
+</div>
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface mb-xs">Caption Length</label>
+<select class="w-full rounded-lg border-outline-variant bg-surface-container-lowest text-body-md focus:border-primary focus:ring-0">
+<option>Short (1-2 sentences)</option>
+<option>Medium (1 paragraph)</option>
+<option>Long (Detailed story)</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface mb-xs">Target Audience</label>
+<input class="w-full rounded-lg border-outline-variant bg-surface-container-lowest text-body-md focus:border-primary focus:ring-0" placeholder="e.g. Small business owners in tech" type="text"/>
+</div>
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface mb-xs">Key Message / Keywords</label>
+<textarea class="w-full rounded-lg border-outline-variant bg-surface-container-lowest text-body-md focus:border-primary focus:ring-0" placeholder="Describe what the post is about..." rows="4"></textarea>
+</div>
+<button class="w-full py-md bg-primary text-on-primary font-headline-md rounded-xl hover:shadow-lg transition-all active:scale-[0.98] flex justify-center items-center gap-sm" type="button">
+<span class="material-symbols-outlined">auto_awesome</span>
+                                Generate Magic
+                            </button>
+</form>
+</section>
+<!-- Trending Hashtags Section -->
+<section class="bg-white rounded-xl p-lg border border-outline-variant/30 shadow-[0px_4px_12px_rgba(0,0,0,0.03)]">
+<div class="flex justify-between items-center mb-md">
+<h4 class="font-label-bold text-on-surface uppercase tracking-wider">Trending Hashtags</h4>
+<span class="material-symbols-outlined text-primary/40 cursor-pointer">refresh</span>
+</div>
+<div class="flex flex-wrap gap-sm">
+<span class="px-sm py-xs bg-primary-fixed/20 text-primary text-[11px] font-bold rounded-full border border-primary-fixed/30 hover:bg-primary-fixed/40 cursor-pointer">#SocialMediaMarketing</span>
+<span class="px-sm py-xs bg-primary-fixed/20 text-primary text-[11px] font-bold rounded-full border border-primary-fixed/30 hover:bg-primary-fixed/40 cursor-pointer">#AICreativity</span>
+<span class="px-sm py-xs bg-primary-fixed/20 text-primary text-[11px] font-bold rounded-full border border-primary-fixed/30 hover:bg-primary-fixed/40 cursor-pointer">#GrowthHacking</span>
+<span class="px-sm py-xs bg-primary-fixed/20 text-primary text-[11px] font-bold rounded-full border border-primary-fixed/30 hover:bg-primary-fixed/40 cursor-pointer">#DigitalAgency</span>
+<span class="px-sm py-xs bg-primary-fixed/20 text-primary text-[11px] font-bold rounded-full border border-primary-fixed/30 hover:bg-primary-fixed/40 cursor-pointer">#ContentStrategy</span>
+</div>
+</section>
+</div>
+<!-- Right Panel: Output & Templates -->
+<div class="col-span-12 lg:col-span-7 flex flex-col gap-lg">
+<!-- AI Status / Empty State or Content -->
+<div class="relative rounded-2xl overflow-hidden h-48 bg-primary">
+<img alt="Canvas Image" class="w-full h-full object-cover opacity-60" data-alt="A futuristic wide-screen digital landscape representing social media connectivity. Nodes of light and data streams flow across a deep navy blue background, illuminated by soft cyan and lavender glows. The atmosphere is professional, sleek, and represents the high-speed processing of artificial intelligence in a corporate tech environment. Low-angle lighting creates depth and a sense of infinite scale." src="https://lh3.googleusercontent.com/aida/ADBb0ujKwsanRkXbzZCQusaDz-_CSHISAe6etTFauis1hwR7LCfLX2w7FhlibgvuvJJD1YdbOEw06R_jz673DTK3i2mI1EmFKQtLcx3eIZRUN1To9apWENwOYyjOfm9PDG6x9yT2MwwRr_BW4rl8ILysYNoCbIo1_JiJV3QNItoX0-c8n8V_VBikY904NU-ZLWSAT_mZXVB-0YhIFngMIKZJCBNkaeY5EIepGlzWq7TkYpGDQNXUneW38oVKFC5mMgWRzH_lg7p0bRriG8s"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-on-primary p-xl text-center">
+<h3 class="font-headline-xl text-headline-xl">Creative Engine Ready</h3>
+<p class="font-body-md text-on-primary/80 mt-xs">Adjust your parameters on the left to generate new variations.</p>
+</div>
+</div>
+<!-- Generated Captions Display -->
+<div class="space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-primary">Suggestions (3)</h3>
+<div class="flex gap-xs">
+<button class="p-xs hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-[20px]">sort</span></button>
+<button class="p-xs hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</div>
+</div>
+<!-- Caption Card 1 -->
+<div class="bg-white rounded-xl p-lg border-l-4 border-primary shadow-[0px_4px_12px_rgba(0,0,0,0.03)] hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<span class="bg-secondary-container/30 text-secondary px-sm py-xs rounded text-[10px] font-bold uppercase tracking-widest">Variation A - Professional</span>
+<span class="text-on-surface-variant font-label-bold text-[11px]">85% Score</span>
+</div>
+<p class="font-body-lg text-on-surface leading-relaxed mb-md">
+                                Transform your social media presence with our new AI-driven toolkit! 🚀 Stop spending hours on copywriting and start focusing on what truly matters: building relationships with your audience. Data-backed strategies are now just a click away. ✨
+                            </p>
+<div class="flex flex-wrap gap-xs mb-lg">
+<span class="text-primary text-body-md font-bold">#SocialMediaStrategy</span>
+<span class="text-primary text-body-md font-bold">#AIPowered</span>
+<span class="text-primary text-body-md font-bold">#BusinessGrowth</span>
+</div>
+<div class="flex justify-between items-center pt-md border-t border-outline-variant/30">
+<div class="flex gap-md">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+<span class="text-label-bold font-label-bold">Copy</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+<span class="text-label-bold font-label-bold">Regenerate</span>
+</button>
+</div>
+<button class="px-md py-sm bg-primary-container text-on-primary-container rounded-lg font-label-bold hover:bg-primary transition-all">
+                                    Add to Queue
+                                </button>
+</div>
+</div>
+<!-- Caption Card 2 -->
+<div class="bg-white rounded-xl p-lg border border-outline-variant/30 shadow-[0px_4px_12px_rgba(0,0,0,0.03)] hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<span class="bg-on-tertiary-container/10 text-on-tertiary-container px-sm py-xs rounded text-[10px] font-bold uppercase tracking-widest">Variation B - Witty</span>
+<span class="text-on-surface-variant font-label-bold text-[11px]">92% Score</span>
+</div>
+<p class="font-body-lg text-on-surface leading-relaxed mb-md">
+                                Working harder or working smarter? Let’s go with smarter. 🧠 Your social media feed called, and it wants an upgrade. Our AI Studio is the creative partner you didn't know you needed (and it doesn't take your lunch). Ready to level up? 🎮
+                            </p>
+<div class="flex flex-wrap gap-xs mb-lg">
+<span class="text-primary text-body-md font-bold">#WorkSmarter</span>
+<span class="text-primary text-body-md font-bold">#AIContent</span>
+<span class="text-primary text-body-md font-bold">#MarketingHumor</span>
+</div>
+<div class="flex justify-between items-center pt-md border-t border-outline-variant/30">
+<div class="flex gap-md">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+<span class="text-label-bold font-label-bold">Copy</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+<span class="text-label-bold font-label-bold">Regenerate</span>
+</button>
+</div>
+<button class="px-md py-sm bg-primary-container text-on-primary-container rounded-lg font-label-bold hover:bg-primary transition-all">
+                                    Add to Queue
+                                </button>
+</div>
+</div>
+</div>
+<!-- Prompt Templates -->
+<section>
+<h4 class="font-headline-md text-headline-md text-primary mb-md">Popular Templates</h4>
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant/50 hover:border-primary-fixed cursor-pointer transition-all flex items-center gap-md">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-[20px]">rocket_launch</span>
+</div>
+<div>
+<p class="text-label-bold font-label-bold">Product Launch</p>
+<p class="text-[11px] text-on-surface-variant">High hype &amp; CTA focus</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant/50 hover:border-primary-fixed cursor-pointer transition-all flex items-center gap-md">
+<div class="w-10 h-10 bg-secondary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[20px]">lightbulb</span>
+</div>
+<div>
+<p class="text-label-bold font-label-bold">Educational Tip</p>
+<p class="text-[11px] text-on-surface-variant">Value-first carousel style</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Extra Section: AI Insights Gallery -->
+<div class="mt-xl grid grid-cols-4 gap-lg">
+<div class="col-span-4 bg-white rounded-2xl p-xl shadow-sm border border-outline-variant/30 overflow-hidden relative">
+<div class="flex flex-col lg:flex-row gap-xl items-center">
+<div class="lg:w-1/2">
+<h3 class="font-headline-xl text-headline-xl text-primary mb-md">Visualize Your Message</h3>
+<p class="text-body-lg text-on-surface-variant mb-lg">Pair your generated captions with AI-recommended visual styles. Our engine analyzes your text to suggest the perfect aesthetic for your brand's next post.</p>
+<div class="flex gap-md">
+<div class="flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-label-bold font-label-bold">High Engagement</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span class="text-label-bold font-label-bold">Optimal Timing</span>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 flex gap-md">
+<img alt="Visual style suggestion 1" class="w-1/2 aspect-[0.82] object-cover rounded-xl shadow-md" data-alt="A portrait-oriented artistic photograph showcasing a minimalist office setup. A clean white desk holds a sleek laptop and a small succulent plant, bathed in soft, natural morning sunlight streaming through a nearby window. The color palette is dominated by soft creams, whites, and touches of natural green. The lighting is bright and airy, evoking a sense of calm, organized productivity and modern professional lifestyle." src="https://lh3.googleusercontent.com/aida/ADBb0uiyDTxLulY7CukQTwM8-mLnxlzTnvYp78oUmWUPR5uaFksQWMfwL70VtiAXNX1Uzv_mxHse1c8WC7hRBMvwF-1DE3f07HnEko_0OjSmydCstYlKTwezwb7_0ylf3nmseUbLWIHIhKbIwflmxmct8nAC048wtTXy0HhXMZ9X295R9JaiDpMNeOC-Ipfi2IavvXFEKobHqNIITZC-GE7ccMNboECUFRQG4mh_l17AFzBd3UkltNJ393TSv93buaRTE5EJ6wbYTjv2ByY"/>
+<img alt="Visual style suggestion 2" class="w-1/2 aspect-[1.19] object-cover rounded-xl shadow-md" data-alt="A close-up high-definition shot of a professional digital designer's workstation. A high-resolution monitor displays complex social media analytics graphs with vibrant blue and teal data points. Beside the screen, a designer's hand is visible holding a digital stylus over a tablet. The room is dimly lit with cool blue ambient lighting, creating a high-tech, focused, and creative atmosphere that emphasizes precision and data-driven design." src="https://lh3.googleusercontent.com/aida/ADBb0ujLIo2tXXOSmsvcPByJg4RmDdJCtaUS19xFpDcM1D4WOF_6fK-e8zAAdFwr5OQa3PBM9aItSY9ZihrjEaTVHYf6H1H9Fw22UqTZvTIrpo5BWGiwuoPg_y0G7bxp5CXAEwCy9k9_0exfDPZUOtFuBVcyB4awS2IaSxQYNwMJUVuP58AGaCGvewf0GhQ2ejmDOAZQi8JXHln78s3kRuLLi14nKKbRPC6qvyf_IIlE131rW_KrgQjdSi1bDxOGYTKHG12YjfTreIisozA"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB: Autonomously determined active as "Auto Awesome" context -->
+<div class="fixed bottom-lg right-lg z-50">
+<button class="flex items-center gap-sm bg-primary text-on-primary px-xl py-md rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-bold uppercase tracking-widest text-[11px]">Smart Refine</span>
+</button>
+</div>
+</body></html>

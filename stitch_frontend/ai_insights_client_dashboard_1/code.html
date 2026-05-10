@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Insights - Client Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#e8c08a",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#1c1c16",
+                    "primary-fixed": "#d8e2ff",
+                    "on-background": "#1b1b1e",
+                    "surface-tint": "#4e5e81",
+                    "on-secondary-container": "#66645d",
+                    "secondary-container": "#e6e2d8",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#fbf8fc",
+                    "inverse-primary": "#b6c6ef",
+                    "on-surface-variant": "#44474e",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#b08d5b",
+                    "on-primary-container": "#8293b8",
+                    "surface-container-highest": "#e4e2e5",
+                    "surface-container-low": "#f5f3f6",
+                    "on-error": "#ffffff",
+                    "background": "#fbf8fc",
+                    "on-surface": "#1b1b1e",
+                    "outline-variant": "#c5c6cf",
+                    "on-secondary-fixed-variant": "#484740",
+                    "inverse-on-surface": "#f2f0f3",
+                    "tertiary-fixed": "#ffddb1",
+                    "surface-container-high": "#e9e7eb",
+                    "surface": "#fbf8fc",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#3e2700",
+                    "secondary": "#605e57",
+                    "inverse-surface": "#303033",
+                    "surface-variant": "#e4e2e5",
+                    "on-tertiary-fixed": "#291800",
+                    "primary-fixed-dim": "#b6c6ef",
+                    "on-tertiary-fixed-variant": "#5d4217",
+                    "surface-dim": "#dbd9dc",
+                    "primary": "#031635",
+                    "secondary-fixed-dim": "#cac6bd",
+                    "on-primary-fixed-variant": "#364768",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#efedf0",
+                    "on-primary-fixed": "#081b3a",
+                    "secondary-fixed": "#e6e2d8",
+                    "primary-container": "#1a2b4b",
+                    "on-primary": "#ffffff",
+                    "outline": "#75777f",
+                    "tertiary": "#231400"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding": "24px",
+                    "gutter": "20px",
+                    "unit": "4px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-bold": ["Inter"],
+                    "headline-md": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "stat-lg": ["Manrope"],
+                    "headline-xl": ["Manrope"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "stat-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-xl": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-card {
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #f2f0f3;
+        }
+        .sidebar-recede {
+            background-color: #031635; /* Primary from config, applied to sidebar */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<!-- Top Navigation Shell -->
+<header class="bg-surface dark:bg-background docked full-width top-0 sticky z-40">
+<div class="flex justify-between items-center w-full px-container-padding h-16">
+<div class="flex items-center gap-md">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">
+                    My Dashboard
+                </div>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-outline dark:text-outline-variant p-sm hover:bg-surface-container-low transition-colors rounded-full">notifications</button>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a smiling man in a business setting, illuminated by soft studio lighting. The background is a clean, minimalist office environment with neutral tones, aligning with a high-end corporate aesthetic. The overall mood is reliable and friendly, emphasizing professional efficiency and accessibility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEtyRnxpacdRHGToA6VM33M5T7tccojVmhs75y3_mTU6Luqp2JOdPL6O4E0Il3BOwB0J85RM9LvHSw7DQJpd3F52esZzxiXzRv0WLdKEy3T16dJrFrd8doqysN7nV2q2ztyxMB9sLrofyMhuCqo6U8llP4ZU3NowUd-pZvrQMaIcY3PDJD5YiuqEqTg-5sAkawnfiuUDHhrgaJB3z757DrwHb1S0rkck4OxKRXMefraJERwbPTdfJkW9jemj9G7lXmwkaXOmR0uidR"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- Sidebar Shell (Responsive Pivot: Hidden on mobile as per requirement for BottomNavBar) -->
+<aside class="hidden md:flex flex-col w-60 sidebar-recede text-on-primary fixed h-full z-30">
+<div class="p-lg">
+<div class="font-headline-xl text-headline-xl text-on-primary mb-xl">Analytics</div>
+<nav class="space-y-sm">
+<a class="flex items-center gap-md p-md rounded-xl text-on-primary/70 hover:bg-primary-container/20 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-bold text-label-bold">Dashboard</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-xl text-on-primary/70 hover:bg-primary-container/20 transition-all" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-bold text-label-bold">Scheduler</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-xl text-on-primary/70 hover:bg-primary-container/20 transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-bold text-label-bold">Analytics</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-3 gap-1" href="#">
+<div class="flex items-center gap-md w-full">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-bold text-label-bold">AI Insights</span>
+</div>
+</a>
+<a class="flex items-center gap-md p-md rounded-xl text-on-primary/70 hover:bg-primary-container/20 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-bold text-label-bold">Settings</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-60 pb-32">
+<div class="max-w-7xl mx-auto p-container-padding space-y-xl">
+<!-- Section 1: Overview Bento Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-8 bg-surface-container-lowest p-lg rounded-xl tonal-card">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-xs">Weekly Growth Snapshot</h2>
+<p class="text-body-md text-outline">Comparison of total reach vs previous week</p>
+</div>
+<div class="bg-primary-fixed text-on-primary-fixed px-sm py-xs rounded-lg font-label-bold text-label-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +12.4%
+                            </div>
+</div>
+<div class="h-48 flex items-end gap-2 w-full mt-lg">
+<div class="bg-primary-container/10 flex-1 rounded-t-sm h-[40%]"></div>
+<div class="bg-primary-container/20 flex-1 rounded-t-sm h-[60%]"></div>
+<div class="bg-primary-container/30 flex-1 rounded-t-sm h-[50%]"></div>
+<div class="bg-primary-container/40 flex-1 rounded-t-sm h-[75%]"></div>
+<div class="bg-primary-container/60 flex-1 rounded-t-sm h-[90%]"></div>
+<div class="bg-primary flex-1 rounded-t-sm h-[100%] shadow-lg"></div>
+<div class="bg-primary-container/20 flex-1 rounded-t-sm h-[45%]"></div>
+</div>
+</div>
+<div class="lg:col-span-4 bg-primary text-on-primary p-lg rounded-xl shadow-lg flex flex-col justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md mb-xs">Top Platform</h2>
+<p class="text-on-primary/70 text-body-md">Highest engagement conversion</p>
+</div>
+<div class="flex items-center gap-md mt-xl">
+<div class="w-14 h-14 bg-on-primary/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px]">hub</span>
+</div>
+<div>
+<div class="font-stat-lg text-stat-lg">LinkedIn</div>
+<div class="text-on-primary/70 font-label-bold">4.2k Active Sessions</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Timing & Insights -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Timing Card -->
+<div class="bg-surface-container-lowest p-lg rounded-xl tonal-card flex flex-col items-center text-center">
+<h3 class="font-headline-md text-headline-md text-primary mb-md self-start">Best Posting Time</h3>
+<div class="relative w-40 h-40 flex items-center justify-center rounded-full border-4 border-primary-container/20 my-md">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-32 h-32 rounded-full border border-dashed border-outline"></div>
+</div>
+<div class="text-center z-10">
+<div class="font-stat-lg text-stat-lg text-primary">10:45</div>
+<div class="font-label-bold text-on-primary-container bg-primary-container px-2 py-0.5 rounded-full">AM EST</div>
+</div>
+<!-- Radial Clock Marker -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 -mt-2">
+<div class="w-4 h-4 bg-primary rounded-full"></div>
+</div>
+</div>
+<p class="text-body-md text-outline mt-md">Optimal window for peak audience synchronization based on history.</p>
+</div>
+<!-- Insights Cards -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-lg rounded-xl tonal-card">
+<div class="flex justify-between items-center mb-xl">
+<h3 class="font-headline-md text-headline-md text-primary">Engagement Recommendations</h3>
+<span class="material-symbols-outlined text-primary-container">lightbulb</span>
+</div>
+<div class="space-y-md">
+<div class="flex items-center gap-md p-md bg-surface-container-low rounded-lg">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed-dim flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div class="flex-1">
+<div class="font-label-bold text-primary">Increase Interaction Frequency</div>
+<p class="text-body-md text-outline">Response rates under 5 mins drive 3x more algorithmic visibility.</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<div class="flex items-center gap-md p-md bg-surface-container-low rounded-lg">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">video_library</span>
+</div>
+<div class="flex-1">
+<div class="font-label-bold text-primary">Video Content Pivot</div>
+<p class="text-body-md text-outline">Short-form videos are currently yielding 40% higher retention.</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Audience Activity Chart (Simulated) -->
+<section class="bg-surface-container-lowest p-lg rounded-xl tonal-card">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-headline-md text-headline-md text-primary">Audience Activity Insights</h3>
+<div class="flex gap-sm">
+<div class="flex items-center gap-xs"><span class="w-3 h-3 rounded-full bg-primary"></span> <span class="text-label-bold">Current</span></div>
+<div class="flex items-center gap-xs"><span class="w-3 h-3 rounded-full bg-outline-variant"></span> <span class="text-label-bold">Benchmark</span></div>
+</div>
+</div>
+<div class="relative h-64 w-full">
+<svg class="w-full h-full preserve-3d" viewbox="0 0 1000 300">
+<!-- Background Grid -->
+<line stroke="#f2f0f3" stroke-width="1" x1="0" x2="1000" y1="50" y2="50"></line>
+<line stroke="#f2f0f3" stroke-width="1" x1="0" x2="1000" y1="150" y2="150"></line>
+<line stroke="#f2f0f3" stroke-width="1" x1="0" x2="1000" y1="250" y2="250"></line>
+<!-- Line Path -->
+<path d="M0 250 Q 150 200 250 220 T 500 100 T 750 180 T 1000 50" fill="none" stroke="#031635" stroke-linecap="round" stroke-width="4"></path>
+<path d="M0 260 Q 150 240 250 250 T 500 180 T 750 220 T 1000 150" fill="none" stroke="#c5c6cf" stroke-dasharray="8 4" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="flex justify-between mt-md px-1">
+<span class="text-label-bold text-outline">Mon</span>
+<span class="text-label-bold text-outline">Tue</span>
+<span class="text-label-bold text-outline">Wed</span>
+<span class="text-label-bold text-outline">Thu</span>
+<span class="text-label-bold text-outline">Fri</span>
+<span class="text-label-bold text-outline">Sat</span>
+<span class="text-label-bold text-outline">Sun</span>
+</div>
+</div>
+</section>
+<!-- Section 4: Content Suggestions & AI Feed -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Trending Content Widgets -->
+<div class="space-y-md">
+<h3 class="font-headline-md text-headline-md text-primary">Trending Suggestions</h3>
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container-lowest p-md rounded-xl tonal-card relative overflow-hidden group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity" data-alt="A clean, professional photograph of a laptop displaying colorful analytical data charts and financial graphs. The lighting is soft and natural, coming from a nearby window in a modern, minimalist office. The composition is sharp and high-contrast, featuring a palette of deep blues and whites to reflect a data-focused environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD42B-907aGqwaEuTqnZZXUe7xWWmdhVcY0EKdbR8pgQK9BMjM4FEwLby6uehZ7CvzFQN4u9YCIWEUlMcLFpA1rXitbmeVCkr6DUEk2EXeAH9NQaCe-AdZso8LCSOhxjhuJO0sbUXl2uF96BamEuhwou09OYECjCjgHiaC2RCXsR2B61swkEj3yVGwneL_pFhxdcjx35p9u-lEg691fzJi0K0JfmD-fB-4WicTtT0xV0fz_wsaQJNQtHrWk2zTMybulXITUc5JEi8-v"/>
+<div class="relative z-10">
+<div class="font-label-bold text-on-secondary-container bg-secondary-container inline-block px-2 py-0.5 rounded mb-xs">Data Visualization</div>
+<div class="font-body-md text-primary font-bold">Q3 Growth Reports</div>
+<div class="text-label-bold text-outline mt-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">visibility</span> 12.8k potential
+                                    </div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl tonal-card relative overflow-hidden group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity" data-alt="A candid, high-quality photograph of a diverse team of professionals collaborating around a large wooden table in a brightly lit, modern co-working space. The mood is energetic and creative, with high-key lighting and a professional yet accessible atmosphere. The visual style is crisp and modern, with soft depth-of-field effects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj-wSxT-XslKdDkPr7G9Ms0GThvcBk8H3N_b48FxuYKO2XGgGXlNasVCnSXD9pP4KhmbD9cRVtX1JV4L_MA8Xj8vvjwNYwtWzkiPqlkKAHCU6tglN5_WqpXMroHdWQTaFhHfjzCoRniDBMIiKvsD-w8GgxhHHeIK_5kINb61dacoFvDL9OzL2utAYGQ31spWO2PvIzH8J7xNhiKAgLim65UjJZk5HK7LyCjt7gnmF9W77spErRkbMUh0S4ELAUphNFPNWzBO0oj8kY"/>
+<div class="relative z-10">
+<div class="font-label-bold text-on-secondary-container bg-secondary-container inline-block px-2 py-0.5 rounded mb-xs">Culture</div>
+<div class="font-body-md text-primary font-bold">Remote Team Life</div>
+<div class="text-label-bold text-outline mt-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">visibility</span> 9.1k potential
+                                    </div>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Actionable Tips Feed -->
+<div class="bg-surface-container-highest/30 p-lg rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md text-primary">AI Suggestions Feed</h3>
+</div>
+<ul class="space-y-lg">
+<li class="flex items-start gap-md">
+<div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+<div>
+<div class="font-label-bold text-primary">Optimize Headline Syntax</div>
+<p class="text-body-md text-outline">Switching to "How-to" formats for LinkedIn posts could boost reach by 22% this week.</p>
+</div>
+</li>
+<li class="flex items-start gap-md">
+<div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+<div>
+<div class="font-label-bold text-primary">Content Recalibration</div>
+<p class="text-body-md text-outline">Your "Technical Deep-dive" series is over-performing. Consider adding a weekly summary.</p>
+</div>
+</li>
+<li class="flex items-start gap-md">
+<div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+<div>
+<div class="font-label-bold text-primary">Hashtag Density</div>
+<p class="text-body-md text-outline">Reducing hashtags from 12 to 5 on Instagram is improving your account authority score.</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Bottom Navigation Shell (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-sm py-md bg-primary dark:bg-on-primary-fixed z-50 rounded-t-xl shadow-lg">
+<div class="flex flex-col items-center justify-center text-on-primary/70 dark:text-on-primary-fixed-variant/70">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-bold text-label-bold">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-primary/70 dark:text-on-primary-fixed-variant/70">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-bold text-label-bold">Scheduler</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-primary/70 dark:text-on-primary-fixed-variant/70">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-bold text-label-bold">Analytics</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-on-primary-fixed-variant text-on-primary-container dark:text-primary-fixed rounded-xl px-3 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-bold text-label-bold">AI Insights</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-primary/70 dark:text-on-primary-fixed-variant/70">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-bold text-label-bold">Settings</span>
+</div>
+</nav>
+</body></html>

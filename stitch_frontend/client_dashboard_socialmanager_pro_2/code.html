@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Client Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e4e2e5",
+                        "on-surface-variant": "#44474e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#5d4217",
+                        "surface-dim": "#dbd9dc",
+                        "on-secondary-fixed": "#1c1c16",
+                        "tertiary": "#231400",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#fbf8fc",
+                        "on-primary-fixed-variant": "#364768",
+                        "primary-container": "#1a2b4b",
+                        "primary": "#031635",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#1b1b1e",
+                        "outline": "#75777f",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#efedf0",
+                        "outline-variant": "#c5c6cf",
+                        "surface-container-highest": "#e4e2e5",
+                        "surface-container-high": "#e9e7eb",
+                        "tertiary-fixed": "#ffddb1",
+                        "surface-tint": "#4e5e81",
+                        "secondary-container": "#e6e2d8",
+                        "on-tertiary-fixed": "#291800",
+                        "on-primary-container": "#8293b8",
+                        "primary-fixed-dim": "#b6c6ef",
+                        "inverse-primary": "#b6c6ef",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#cac6bd",
+                        "background": "#fbf8fc",
+                        "tertiary-fixed-dim": "#e8c08a",
+                        "secondary": "#605e57",
+                        "surface-container-low": "#f5f3f6",
+                        "on-tertiary-container": "#b08d5b",
+                        "on-surface": "#1b1b1e",
+                        "inverse-surface": "#303033",
+                        "secondary-fixed": "#e6e2d8",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#66645d",
+                        "surface": "#fbf8fc",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#3e2700",
+                        "primary-fixed": "#d8e2ff",
+                        "on-secondary-fixed-variant": "#484740",
+                        "on-primary-fixed": "#081b3a",
+                        "inverse-on-surface": "#f2f0f3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "md": "16px",
+                        "gutter": "20px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "container-padding": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "stat-lg": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "headline-xl": ["Manrope"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "stat-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-xl": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fbf8fc;
+            font-family: 'Inter', sans-serif;
+        }
+        .sidebar-fixed {
+            background-color: #0F2147;
+        }
+    </style>
+</head>
+<body class="text-on-surface overflow-x-hidden">
+<!-- SIDEBAR -->
+<aside class="fixed left-0 top-0 h-full w-[240px] z-50 sidebar-fixed flex flex-col gap-sm p-md">
+<div class="px-md py-lg mb-md">
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">Client Dashboard</h1>
+<p class="font-label-bold text-label-bold text-on-primary/60">Management Pro</p>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="bg-primary-container/20 text-on-primary rounded-lg px-md py-sm flex items-center gap-md opacity-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/10 px-md py-sm rounded-lg flex items-center gap-md transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="post_add">post_add</span>
+<span class="font-body-md text-body-md">Posts</span>
+</a>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/10 px-md py-sm rounded-lg flex items-center gap-md transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/10 px-md py-sm rounded-lg flex items-center gap-md transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-body-md text-body-md">Reach</span>
+</a>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/10 px-md py-sm rounded-lg flex items-center gap-md transition-colors mt-auto" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- MAIN WRAPPER -->
+<div class="ml-[240px] flex flex-col min-h-screen">
+<!-- TOP NAVBAR -->
+<header class="sticky top-0 z-40 w-full bg-surface border-b border-outline-variant shadow-sm flex justify-between items-center px-lg py-md">
+<div class="flex-1 max-w-xl">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-xl pr-md py-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all font-body-md text-body-md" placeholder="Search clients, posts, platforms..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="text-right hidden md:block">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">My Dashboard</h2>
+<p class="font-label-bold text-label-bold text-on-surface-variant">Your social media overview — May 6, 2026</p>
+</div>
+<div class="flex items-center gap-md border-l border-outline-variant pl-lg">
+<button class="relative p-sm hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2.5 h-2.5 bg-tertiary-container border-2 border-surface rounded-full"></span>
+</button>
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold font-label-bold">SR</div>
+</div>
+</div>
+</div>
+</header>
+<!-- CONTENT -->
+<main class="p-xl space-y-xl">
+<!-- ANALYTICS ROW -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<div class="bg-white p-lg rounded-lg border border-outline-variant/30 shadow-[0px_4px_12px_rgba(0,0,0,0.03)] flex flex-col gap-sm">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Posts this month</span>
+<div class="flex items-end justify-between">
+<span class="font-stat-lg text-stat-lg text-primary">24</span>
+<span class="font-label-bold text-label-bold text-teal-600 flex items-center">+12% <span class="material-symbols-outlined text-[14px]">trending_up</span></span>
+</div>
+</div>
+<div class="bg-white p-lg rounded-lg border border-outline-variant/30 shadow-[0px_4px_12px_rgba(0,0,0,0.03)] flex flex-col gap-sm">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Total likes</span>
+<div class="flex items-end justify-between">
+<span class="font-stat-lg text-stat-lg text-primary">1.7K</span>
+<span class="font-label-bold text-label-bold text-teal-600 flex items-center">+8% <span class="material-symbols-outlined text-[14px]">trending_up</span></span>
+</div>
+</div>
+<div class="bg-white p-lg rounded-lg border border-outline-variant/30 shadow-[0px_4px_12px_rgba(0,0,0,0.03)] flex flex-col gap-sm">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Total reach (30d)</span>
+<div class="flex items-end justify-between">
+<span class="font-stat-lg text-stat-lg text-primary">15.2K</span>
+<span class="font-label-bold text-label-bold text-error flex items-center">-2% <span class="material-symbols-outlined text-[14px]">trending_down</span></span>
+</div>
+</div>
+<div class="bg-white p-lg rounded-lg border border-outline-variant/30 shadow-[0px_4px_12px_rgba(0,0,0,0.03)] flex flex-col gap-sm">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Scheduled posts</span>
+<div class="flex items-end justify-between">
+<span class="font-stat-lg text-stat-lg text-primary">5</span>
+<span class="font-label-bold text-label-bold text-primary-fixed-dim">On track</span>
+</div>
+</div>
+</section>
+<!-- POSTS & PLATFORMS ROW -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-lg items-start">
+<!-- Recent Posts (Wide) -->
+<div class="lg:col-span-2 bg-white rounded-lg border border-outline-variant/30 shadow-[0px_4px_12px_rgba(0,0,0,0.03)]">
+<div class="p-lg border-b border-outline-variant/30 flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-primary">Recent &amp; Scheduled Posts</h3>
+<a class="font-label-bold text-label-bold text-primary hover:underline" href="#">View all →</a>
+</div>
+<div class="divide-y divide-outline-variant/20">
+<!-- Post Item -->
+<div class="p-lg flex items-center gap-lg">
+<div class="w-12 h-12 rounded-lg bg-surface flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A close-up of a vibrant digital content calendar with colorful blocks representing social media posts on Instagram and Facebook. The lighting is crisp and bright, following a modern SaaS light-mode design language. The color palette is composed of professional deep blues and clean whites with orange accents for emphasis." src="https://lh3.googleusercontent.com/aida/ADBb0ujLIo2tXXOSmsvcPByJg4RmDdJCtaUS19xFpDcM1D4WOF_6fK-e8zAAdFwr5OQa3PBM9aItSY9ZihrjEaTVHYf6H1H9Fw22UqTZvTIrpo5BWGiwuoPg_y0G7bxp5CXAEwCy9k9_0exfDPZUOtFuBVcyB4awS2IaSxQYNwMJUVuP58AGaCGvewf0GhQ2ejmDOAZQi8JXHln78s3kRuLLi14nKKbRPC6qvyf_IIlE131rW_KrgQjdSi1bDxOGYTKHG12YjfTreIisozA"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-pink-600 text-[18px]">photo_camera</span>
+<span class="font-label-bold text-label-bold uppercase text-on-surface-variant">Instagram</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface truncate">Exciting news coming this Friday! Stay tuned...</p>
+</div>
+<div class="text-right hidden sm:block px-md">
+<p class="font-label-bold text-label-bold text-primary">420 Likes</p>
+<p class="font-label-bold text-label-bold text-on-surface-variant">5.2K Reach</p>
+</div>
+<div class="px-md py-xs bg-teal-50 text-teal-700 rounded-full font-label-bold text-label-bold whitespace-nowrap">Posted</div>
+</div>
+<!-- Post Item -->
+<div class="p-lg flex items-center gap-lg">
+<div class="w-12 h-12 rounded-lg bg-surface flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist workspace with a laptop displaying professional analytics dashboards and social media scheduling software. The scene is bright and airy with high-key natural lighting. The overall aesthetic is professional SaaS with a focus on productivity and efficiency, utilizing a palette of whites, grays, and deep navy blues." src="https://lh3.googleusercontent.com/aida/ADBb0uiyDTxLulY7CukQTwM8-mLnxlzTnvYp78oUmWUPR5uaFksQWMfwL70VtiAXNX1Uzv_mxHse1c8WC7hRBMvwF-1DE3f07HnEko_0OjSmydCstYlKTwezwb7_0ylf3nmseUbLWIHIhKbIwflmxmct8nAC048wtTXy0HhXMZ9X295R9JaiDpMNeOC-Ipfi2IavvXFEKobHqNIITZC-GE7ccMNboECUFRQG4mh_l17AFzBd3UkltNJ393TSv93buaRTE5EJ6wbYTjv2ByY"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-blue-600 text-[18px]">social_leaderboard</span>
+<span class="font-label-bold text-label-bold uppercase text-on-surface-variant">Facebook</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface truncate">Our latest case study is live on the blog. Learn how we scaled...</p>
+</div>
+<div class="text-right hidden sm:block px-md">
+<p class="font-label-bold text-label-bold text-primary">85 Shares</p>
+<p class="font-label-bold text-label-bold text-on-surface-variant">2.1K Reach</p>
+</div>
+<div class="px-md py-xs bg-primary-fixed/20 text-primary rounded-full font-label-bold text-label-bold whitespace-nowrap">Scheduled</div>
+</div>
+<!-- Post Item -->
+<div class="p-lg flex items-center gap-lg">
+<div class="w-12 h-12 rounded-lg bg-surface flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylized wide shot of a professional office environment with large windows and digital displays showing social media growth trends. The lighting is soft and corporate, creating a serene and efficient mood. The color palette features light grays, pristine whites, and the brand's signature deep navy blue, maintaining a clean and premium SaaS appearance." src="https://lh3.googleusercontent.com/aida/ADBb0ujKwsanRkXbzZCQusaDz-_CSHISAe6etTFauis1hwR7LCfLX2w7FhlibgvuvJJD1YdbOEw06R_jz673DTK3i2mI1EmFKQtLcx3eIZRUN1To9apWENwOYyjOfm9PDG6x9yT2MwwRr_BW4rl8ILysYNoCbIo1_JiJV3QNItoX0-c8n8V_VBikY904NU-ZLWSAT_mZXVB-0YhIFngMIKZJCBNkaeY5EIepGlzWq7TkYpGDQNXUneW38oVKFC5mMgWRzH_lg7p0bRriG8s"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-slate-800 text-[18px]">close</span>
+<span class="font-label-bold text-label-bold uppercase text-on-surface-variant">X (Twitter)</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface truncate">New feature alert: AI-powered captions are here! 🚀 #SocialManager</p>
+</div>
+<div class="text-right hidden sm:block px-md">
+<p class="font-label-bold text-label-bold text-primary">12 Retweets</p>
+<p class="font-label-bold text-label-bold text-on-surface-variant">1.5K Reach</p>
+</div>
+<div class="px-md py-xs bg-teal-50 text-teal-700 rounded-full font-label-bold text-label-bold whitespace-nowrap">Posted</div>
+</div>
+</div>
+</div>
+<!-- Connected Platforms (Narrow) -->
+<div class="bg-white rounded-lg border border-outline-variant/30 shadow-[0px_4px_12px_rgba(0,0,0,0.03)]">
+<div class="p-lg border-b border-outline-variant/30">
+<h3 class="font-headline-md text-headline-md text-primary">Connected Platforms</h3>
+</div>
+<div class="p-lg space-y-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center text-pink-600">
+<span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-primary">Instagram</p>
+<p class="font-body-md text-body-md text-on-surface-variant">12.4K followers</p>
+</div>
+</div>
+<span class="w-2 h-2 bg-teal-500 rounded-full" title="Active"></span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-900">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-primary">X (Twitter)</p>
+<p class="font-body-md text-body-md text-on-surface-variant">8.2K followers</p>
+</div>
+</div>
+<span class="w-2 h-2 bg-teal-500 rounded-full" title="Active"></span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-700">
+<span class="material-symbols-outlined" data-icon="business">business</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-primary">LinkedIn</p>
+<p class="font-body-md text-body-md text-on-surface-variant">3.5K connections</p>
+</div>
+</div>
+<span class="w-2 h-2 bg-teal-500 rounded-full" title="Active"></span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined" data-icon="facebook">social_leaderboard</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-primary">Facebook</p>
+<p class="font-body-md text-body-md text-on-surface-variant">5.1K likes</p>
+</div>
+</div>
+<span class="w-2 h-2 bg-teal-500 rounded-full" title="Active"></span>
+</div>
+</div>
+</div>
+</section>
+<!-- ANALYTICS VISUALIZATION ROW -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+<!-- Posts Weekly Chart -->
+<div class="bg-white rounded-lg border border-outline-variant/30 shadow-[0px_4px_12px_rgba(0,0,0,0.03)] p-lg">
+<div class="flex justify-between items-center mb-xl">
+<h3 class="font-headline-md text-headline-md text-primary">Posts this week</h3>
+<div class="flex gap-md">
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 bg-primary rounded-xs"></span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">Posted</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 bg-primary-fixed-dim rounded-xs"></span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">Scheduled</span>
+</div>
+</div>
+</div>
+<div class="flex items-end justify-between h-48 gap-sm">
+<!-- Chart Bar Group -->
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full flex items-end gap-1 h-full">
+<div class="flex-1 bg-primary rounded-t-sm" style="height: 60%"></div>
+<div class="flex-1 bg-primary-fixed-dim rounded-t-sm" style="height: 20%"></div>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface-variant">Mon</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full flex items-end gap-1 h-full">
+<div class="flex-1 bg-primary rounded-t-sm" style="height: 80%"></div>
+<div class="flex-1 bg-primary-fixed-dim rounded-t-sm" style="height: 10%"></div>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface-variant">Tue</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full flex items-end gap-1 h-full">
+<div class="flex-1 bg-primary rounded-t-sm" style="height: 40%"></div>
+<div class="flex-1 bg-primary-fixed-dim rounded-t-sm" style="height: 40%"></div>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface-variant">Wed</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full flex items-end gap-1 h-full">
+<div class="flex-1 bg-primary rounded-t-sm" style="height: 90%"></div>
+<div class="flex-1 bg-primary-fixed-dim rounded-t-sm" style="height: 0%"></div>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface-variant">Thu</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full flex items-end gap-1 h-full">
+<div class="flex-1 bg-primary rounded-t-sm" style="height: 70%"></div>
+<div class="flex-1 bg-primary-fixed-dim rounded-t-sm" style="height: 30%"></div>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface-variant">Fri</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full flex items-end gap-1 h-full">
+<div class="flex-1 bg-primary rounded-t-sm" style="height: 20%"></div>
+<div class="flex-1 bg-primary-fixed-dim rounded-t-sm" style="height: 60%"></div>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface-variant">Sat</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full flex items-end gap-1 h-full">
+<div class="flex-1 bg-primary rounded-t-sm" style="height: 10%"></div>
+<div class="flex-1 bg-primary-fixed-dim rounded-t-sm" style="height: 40%"></div>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface-variant">Sun</span>
+</div>
+</div>
+</div>
+<!-- Platform Reach Breakdown -->
+<div class="bg-white rounded-lg border border-outline-variant/30 shadow-[0px_4px_12px_rgba(0,0,0,0.03)] p-lg">
+<h3 class="font-headline-md text-headline-md text-primary mb-xl">Platform Reach Breakdown</h3>
+<div class="space-y-lg">
+<!-- Reach Item -->
+<div>
+<div class="flex justify-between items-center mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-pink-600 text-[18px]">photo_camera</span>
+<span class="font-label-bold text-label-bold text-primary">Instagram</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface-variant">8,400 (55%)</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-pink-600 rounded-full" style="width: 55%"></div>
+</div>
+</div>
+<!-- Reach Item -->
+<div>
+<div class="flex justify-between items-center mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-blue-700 text-[18px]">business</span>
+<span class="font-label-bold text-label-bold text-primary">LinkedIn</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface-variant">3,200 (21%)</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-blue-700 rounded-full" style="width: 21%"></div>
+</div>
+</div>
+<!-- Reach Item -->
+<div>
+<div class="flex justify-between items-center mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-blue-600 text-[18px]">social_leaderboard</span>
+<span class="font-label-bold text-label-bold text-primary">Facebook</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface-variant">2,100 (14%)</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-blue-600 rounded-full" style="width: 14%"></div>
+</div>
+</div>
+<!-- Reach Item -->
+<div>
+<div class="flex justify-between items-center mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-slate-800 text-[18px]">close</span>
+<span class="font-label-bold text-label-bold text-primary">Twitter / X</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface-variant">1,500 (10%)</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-slate-800 rounded-full" style="width: 10%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FOOTER HERO IMAGE -->
+<section class="rounded-lg overflow-hidden h-[300px] relative">
+<img class="w-full h-full object-cover" data-alt="An expansive, high-resolution hero image showcasing a panoramic view of a modern data center and creative agency workspace combined. The lighting is bright and professionally calibrated for a light-mode SaaS UI. The aesthetic is extremely clean and minimal, featuring a palette of pristine whites, subtle light grays, and the corporate deep navy, conveying trust, scale, and high-end technological capability." src="https://lh3.googleusercontent.com/aida/ADBb0ugqfWogcGLE4ojN81MmozfsXsQdbJEltA9F6c0fQnKtQ0IVSCdECvH93geqtGoZQdvHRSRXS3vVaauBPaTKnGGOMfvx6hR8-SbaDWxXKk8aoLMzFR-QQIhq-sc-PZf6bxOqMiTB0lNKASZFJqGjVKgWcz5pfrS_2cvtQs9KNljNnApETKpM7Xvit5DHIutTvro1BOrdVo9ldEn3jOgMn92J2wqn_YYlL54tkdRLOmQ2PcNuwpnCDQhMSzIk8a4FQHE0NtM-ZiyHvzE"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent flex items-center p-xl">
+<div class="max-w-md">
+<h4 class="font-headline-xl text-headline-xl text-on-primary mb-md">Scale Your Social Reach Globally</h4>
+<p class="font-body-lg text-body-lg text-on-primary/80 mb-lg">Unlock deeper insights and automation tools to manage all your clients from a single, unified interface.</p>
+<button class="bg-on-primary text-primary px-lg py-md rounded-lg font-label-bold text-label-bold hover:bg-surface-variant transition-colors">Get Advanced Reports</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>
