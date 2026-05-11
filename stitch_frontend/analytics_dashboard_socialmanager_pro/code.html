@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Analytics | SocialManager Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Manrope:wght@600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#44474e",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#e6e2d8",
+                        "tertiary-container": "#3e2700",
+                        "surface-container": "#efedf0",
+                        "primary-fixed-dim": "#b6c6ef",
+                        "surface-dim": "#dbd9dc",
+                        "surface-container-highest": "#e4e2e5",
+                        "secondary": "#605e57",
+                        "surface-container-high": "#e9e7eb",
+                        "tertiary-fixed": "#ffddb1",
+                        "outline-variant": "#c5c6cf",
+                        "surface": "#fbf8fc",
+                        "surface-bright": "#fbf8fc",
+                        "on-background": "#1b1b1e",
+                        "inverse-surface": "#303033",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1b1b1e",
+                        "on-primary-fixed": "#081b3a",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#4e5e81",
+                        "surface-variant": "#e4e2e5",
+                        "surface-container-low": "#f5f3f6",
+                        "primary-fixed": "#d8e2ff",
+                        "tertiary": "#231400",
+                        "on-primary-fixed-variant": "#364768",
+                        "secondary-container": "#e6e2d8",
+                        "primary-container": "#1a2b4b",
+                        "outline": "#75777f",
+                        "on-tertiary-fixed-variant": "#5d4217",
+                        "on-tertiary-container": "#b08d5b",
+                        "on-secondary-container": "#66645d",
+                        "secondary-fixed-dim": "#cac6bd",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#b6c6ef",
+                        "on-error-container": "#93000a",
+                        "background": "#fbf8fc",
+                        "primary": "#031635",
+                        "on-primary-container": "#8293b8",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#484740",
+                        "tertiary-fixed-dim": "#e8c08a",
+                        "on-tertiary-fixed": "#291800",
+                        "on-secondary-fixed": "#1c1c16",
+                        "inverse-on-surface": "#f2f0f3",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "gutter": "20px",
+                        "md": "16px",
+                        "container-padding": "24px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "lg": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Manrope"],
+                        "label-bold": ["Inter"],
+                        "stat-lg": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "stat-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fbf8fc; /* Soft Cream */
+        }
+        .sidebar-active {
+            background-color: #364768; /* on-primary-fixed-variant */
+            color: #ffffff;
+        }
+        .custom-shadow {
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.03);
+        }
+        .overlay-shadow {
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="w-[240px] h-screen fixed left-0 top-0 bg-primary flex flex-col gap-xl p-lg z-50">
+<div class="flex flex-col gap-xs">
+<span class="font-headline-md text-headline-md font-bold text-on-primary tracking-tight">SMH Dashboard</span>
+<span class="text-on-primary-container text-label-bold font-label-bold opacity-70">Management Suite</span>
+</div>
+<nav class="flex flex-col gap-xs flex-grow">
+<a class="flex items-center gap-md text-on-primary-container hover:bg-on-primary-fixed-variant/50 hover:text-on-primary px-md py-sm transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md text-on-primary-container hover:bg-on-primary-fixed-variant/50 hover:text-on-primary px-md py-sm transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md text-body-md">Clients</span>
+</a>
+<a class="flex items-center gap-md text-on-primary-container hover:bg-on-primary-fixed-variant/50 hover:text-on-primary px-md py-sm transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+<span class="font-body-md text-body-md">Content Queue</span>
+</a>
+<!-- Active Tab: Analytics -->
+<a class="flex items-center gap-md bg-on-primary-fixed-variant text-on-primary rounded-lg px-md py-sm" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-md text-on-primary-container hover:bg-on-primary-fixed-variant/50 hover:text-on-primary px-md py-sm transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-body-md text-body-md">AI Caption Studio</span>
+</a>
+</nav>
+<div class="mt-auto">
+<a class="flex items-center gap-md text-on-primary-container hover:bg-on-primary-fixed-variant/50 hover:text-on-primary px-md py-sm transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 left-[240px] h-16 bg-surface border-b border-outline-variant flex justify-between items-center px-lg z-40">
+<div class="flex items-center gap-md flex-grow">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-xl pr-md py-xs text-body-md focus:ring-2 focus:ring-primary-fixed transition-all" placeholder="Search analytics..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-sm hover:bg-surface-container-high rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-xs"></div>
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-high p-xs rounded-lg transition-colors">
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full object-cover" data-alt="A professional close-up portrait of a woman with a confident expression, captured in a brightly lit, modern office environment. The lighting is soft and flattering, emphasizing clean skin and detailed features. The overall style is corporate yet approachable, aligning with a high-end SaaS platform's minimalist aesthetic and neutral color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgz3tSncB1FGvP4wOGPWmDfO7GEYf0qMzCQ82VY6j6GZnd2WLdFOwTDKvWFbdJTeUDfMSRo1f7ydy11hsBBC_YXcYIH7zHtuvYfndpNWhRoh8KiS4sGXfxZKamXgcQgNl6YTxX-1kzi97O9g2CbLW8PwxcvYjZD65lVPZxkH6z2sbukbM3w9ETvcYgqx_-_HfhEI3VFN_wH5TJ-m4VvETloQMrNmD7t9yjgLFprhHpJYEenIftcnqwb9RuaDt_8R4VZAA0pBdjex7v"/>
+<span class="font-label-bold text-label-bold text-primary">Alex Riviera</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[240px] pt-16 min-h-screen p-xl">
+<!-- Header & Controls -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-xl gap-md">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-primary mb-xs">Analytics</h1>
+<p class="text-on-surface-variant font-body-md">Detailed performance insights across all managed accounts.</p>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex bg-surface-container-high rounded-lg p-xs">
+<button class="px-md py-xs text-label-bold font-label-bold bg-surface-container-lowest text-primary rounded shadow-sm">Last 30 Days</button>
+<button class="px-md py-xs text-label-bold font-label-bold text-on-surface-variant hover:text-primary">90 Days</button>
+<button class="px-md py-xs text-label-bold font-label-bold text-on-surface-variant hover:text-primary">1 Year</button>
+</div>
+<button class="flex items-center gap-sm bg-primary text-on-primary px-lg py-sm rounded-lg font-label-bold text-label-bold hover:bg-primary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                    Export Report
+                </button>
+</div>
+</div>
+<!-- Top Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-md mb-xl">
+<!-- Total Engagement -->
+<div class="bg-surface-container-lowest p-lg rounded-xl custom-shadow border border-surface-container">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-on-surface-variant font-label-bold text-label-bold">Total Engagement</span>
+<span class="text-teal-600 bg-teal-50 px-xs rounded text-[10px] font-bold">+12%</span>
+</div>
+<div class="font-stat-lg text-stat-lg text-primary">1.2M</div>
+</div>
+<!-- Reach -->
+<div class="bg-surface-container-lowest p-lg rounded-xl custom-shadow border border-surface-container">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-on-surface-variant font-label-bold text-label-bold">Reach</span>
+<span class="text-teal-600 bg-teal-50 px-xs rounded text-[10px] font-bold">+8%</span>
+</div>
+<div class="font-stat-lg text-stat-lg text-primary">5.4M</div>
+</div>
+<!-- Followers Growth -->
+<div class="bg-surface-container-lowest p-lg rounded-xl custom-shadow border border-surface-container">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-on-surface-variant font-label-bold text-label-bold">Followers Growth</span>
+<span class="material-symbols-outlined text-teal-600 text-[18px]" data-icon="trending_up">trending_up</span>
+</div>
+<div class="font-stat-lg text-stat-lg text-primary">+45K</div>
+</div>
+<!-- CTR -->
+<div class="bg-surface-container-lowest p-lg rounded-xl custom-shadow border border-surface-container">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-on-surface-variant font-label-bold text-label-bold">CTR</span>
+<span class="text-on-surface-variant opacity-50 font-label-bold text-label-bold">Avg</span>
+</div>
+<div class="font-stat-lg text-stat-lg text-primary">3.4%</div>
+</div>
+<!-- Published Posts -->
+<div class="bg-surface-container-lowest p-lg rounded-xl custom-shadow border border-surface-container">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-on-surface-variant font-label-bold text-label-bold">Published Posts</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="post_add">post_add</span>
+</div>
+<div class="font-stat-lg text-stat-lg text-primary">128</div>
+</div>
+</div>
+<!-- Main Analytics Section (Bento Grid) -->
+<div class="grid grid-cols-12 gap-xl">
+<!-- Engagement Trends (Line Chart Placeholder) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-lg rounded-xl custom-shadow border border-surface-container">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md text-primary">Engagement Trends</h3>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-label-bold text-on-surface-variant">Engagement</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-full bg-primary-fixed-dim"></span>
+<span class="text-label-bold text-on-surface-variant">Reach</span>
+</div>
+</div>
+</div>
+<div class="aspect-[2.38] bg-surface-container-low rounded-lg overflow-hidden relative group">
+<img alt="Engagement Trends Graph" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A sophisticated data visualization line chart displaying social media engagement trends over a thirty-day period. The chart features two elegant, fluid lines in deep navy and soft sky blue, set against a clean white grid. The aesthetic is extremely modern and professional, with high-key lighting and a spacious, minimalist layout that conveys clarity and advanced analytical power." src="https://lh3.googleusercontent.com/aida/ADBb0ujKwsanRkXbzZCQusaDz-_CSHISAe6etTFauis1hwR7LCfLX2w7FhlibgvuvJJD1YdbOEw06R_jz673DTK3i2mI1EmFKQtLcx3eIZRUN1To9apWENwOYyjOfm9PDG6x9yT2MwwRr_BW4rl8ILysYNoCbIo1_JiJV3QNItoX0-c8n8V_VBikY904NU-ZLWSAT_mZXVB-0YhIFngMIKZJCBNkaeY5EIepGlzWq7TkYpGDQNXUneW38oVKFC5mMgWRzH_lg7p0bRriG8s"/>
+</div>
+</div>
+<!-- Audience Demographics (Donut Chart Placeholder) -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest p-lg rounded-xl custom-shadow border border-surface-container">
+<h3 class="font-headline-md text-headline-md text-primary mb-lg">Audience Demographics</h3>
+<div class="aspect-square bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-md">
+<img alt="Audience Demographics Chart" class="w-full h-full object-contain" data-alt="A modern and clean donut chart visualization showing audience demographics by age group. The chart uses a sophisticated palette of deep blues, teals, and soft grays, with clear percentage labels. The setting is a minimalist digital dashboard background, emphasizing a data-centric, professional aesthetic with soft shadows and high-contrast typography for maximum readability." src="https://lh3.googleusercontent.com/aida/ADBb0uiyDTxLulY7CukQTwM8-mLnxlzTnvYp78oUmWUPR5uaFksQWMfwL70VtiAXNX1Uzv_mxHse1c8WC7hRBMvwF-1DE3f07HnEko_0OjSmydCstYlKTwezwb7_0ylf3nmseUbLWIHIhKbIwflmxmct8nAC048wtTXy0HhXMZ9X295R9JaiDpMNeOC-Ipfi2IavvXFEKobHqNIITZC-GE7ccMNboECUFRQG4mh_l17AFzBd3UkltNJ393TSv93buaRTE5EJ6wbYTjv2ByY"/>
+</div>
+<div class="mt-lg space-y-sm">
+<div class="flex justify-between items-center">
+<span class="text-body-md text-on-surface-variant">18-24 years</span>
+<span class="font-label-bold text-primary">32%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full">
+<div class="bg-primary h-full rounded-full" style="width: 32%"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-body-md text-on-surface-variant">25-34 years</span>
+<span class="font-label-bold text-primary">48%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full">
+<div class="bg-primary-fixed-dim h-full rounded-full" style="width: 48%"></div>
+</div>
+</div>
+</div>
+<!-- Platform Performance (Bar Chart Placeholder) -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest p-lg rounded-xl custom-shadow border border-surface-container">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md text-primary">Platform Reach</h3>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</div>
+<div class="aspect-square bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-md">
+<img alt="Platform Performance Chart" class="w-full h-full object-contain" data-alt="A sleek vertical bar chart comparing social media reach performance across Instagram, LinkedIn, and X. The bars are styled with smooth gradients of deep navy and professional blue. Each bar is topped with its respective official platform icon. The visual style is crisp and modern, featuring high-contrast structural elements and a clean, light-mode background typical of elite business intelligence tools." src="https://lh3.googleusercontent.com/aida/ADBb0ujLIo2tXXOSmsvcPByJg4RmDdJCtaUS19xFpDcM1D4WOF_6fK-e8zAAdFwr5OQa3PBM9aItSY9ZihrjEaTVHYf6H1H9Fw22UqTZvTIrpo5BWGiwuoPg_y0G7bxp5CXAEwCy9k9_0exfDPZUOtFuBVcyB4awS2IaSxQYNwMJUVuP58AGaCGvewf0GhQ2ejmDOAZQi8JXHln78s3kRuLLi14nKKbRPC6qvyf_IIlE131rW_KrgQjdSi1bDxOGYTKHG12YjfTreIisozA"/>
+</div>
+<div class="mt-lg flex justify-around">
+<div class="text-center">
+<div class="font-label-bold text-primary">2.1M</div>
+<div class="text-body-md text-on-surface-variant">Instagram</div>
+</div>
+<div class="text-center border-x border-outline-variant px-lg">
+<div class="font-label-bold text-primary">1.8M</div>
+<div class="text-body-md text-on-surface-variant">LinkedIn</div>
+</div>
+<div class="text-center">
+<div class="font-label-bold text-primary">1.5M</div>
+<div class="text-body-md text-on-surface-variant">X (Twitter)</div>
+</div>
+</div>
+</div>
+<!-- Client Comparison Analytics -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-lg rounded-xl custom-shadow border border-surface-container">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md text-primary">Client Performance Index</h3>
+<div class="flex items-center gap-sm">
+<span class="text-body-md text-on-surface-variant">By Revenue Growth</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="filter_list">filter_list</span>
+</div>
+</div>
+<div class="aspect-[2.32] bg-surface-container-low rounded-lg overflow-hidden">
+<img alt="Client Comparison Data" class="w-full h-full object-cover" data-alt="A comparative analysis visualization showing performance metrics for five different corporate clients on a single dashboard screen. The layout uses a sophisticated horizontal bento-style grid where each client's growth is represented by vibrant teal sparklines and bold numerical indicators. The mood is highly professional and data-rich, rendered with a clean Inter font and deep navy accents to ensure elite visual hierarchy." src="https://lh3.googleusercontent.com/aida/ADBb0ugqfWogcGLE4ojN81MmozfsXsQdbJEltA9F6c0fQnKtQ0IVSCdECvH93geqtGoZQdvHRSRXS3vVaauBPaTKnGGOMfvx6hR8-SbaDWxXKk8aoLMzFR-QQIhq-sc-PZf6bxOqMiTB0lNKASZFJqGjVKgWcz5pfrS_2cvtQs9KNljNnApETKpM7Xvit5DHIutTvro1BOrdVo9ldEn3jOgMn92J2wqn_YYlL54tkdRLOmQ2PcNuwpnCDQhMSzIk8a4FQHE0NtM-ZiyHvzE"/>
+</div>
+</div>
+<!-- Best Performing Posts Table -->
+<div class="col-span-12 bg-surface-container-lowest rounded-xl custom-shadow border border-surface-container overflow-hidden">
+<div class="p-lg border-b border-surface-container flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-primary">Best Performing Content</h3>
+<button class="text-primary font-label-bold text-label-bold hover:underline flex items-center gap-xs">
+                        View Full Content Library
+                        <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="p-md font-label-bold text-label-bold text-on-surface-variant">Content Thumbnail</th>
+<th class="p-md font-label-bold text-label-bold text-on-surface-variant">Platform</th>
+<th class="p-md font-label-bold text-label-bold text-on-surface-variant">Eng. Rate</th>
+<th class="p-md font-label-bold text-label-bold text-on-surface-variant">Impressions</th>
+<th class="p-md font-label-bold text-label-bold text-on-surface-variant">Shares</th>
+<th class="p-md font-label-bold text-label-bold text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container rounded overflow-hidden">
+<img alt="Post Thumbnail" class="w-full h-full object-cover" data-alt="A crisp, high-resolution thumbnail of a successful social media post featuring modern abstract architecture and professional color grading. The image is captured in bright daylight, conveying an aesthetic of high-end corporate lifestyle. The composition is clean and follows the rule of thirds, designed to represent top-tier content performance in a minimalist management dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0ZxQEghkShOAVVgkrpR6i1R5gQRElCg-_mq_meE33eTRYoWUaJnmNRTsw9vgNkMaT235qO2RE6KUGK_qb8vh5TJZGsiHp9S6ObPomCy7F8CysLitpgj_xjFqWhCV9wxK6-QYYQxEdbSM_DPhyiGm6t0jl9trAq1ClRBD8G96IZtX_Zfh9RFRkKfZtncoN4D_agly3uHwtVS1HWvsDbgdoAUQaqtMm1YqUviTbRPN5Ox3VwfGiFDbAU9Qgwkseg8dKNQhereYG3zug"/>
+</div>
+<span class="font-body-md text-primary font-semibold">Q4 Strategy Reveal</span>
+</div>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-[#0A66C2]" data-icon="work" style="font-variation-settings: 'FILL' 1;">work</span>
+<span class="text-body-md">LinkedIn</span>
+</div>
+</td>
+<td class="p-md font-label-bold text-primary">8.4%</td>
+<td class="p-md text-body-md">245,000</td>
+<td class="p-md text-body-md">1,240</td>
+<td class="p-md">
+<span class="bg-teal-100 text-teal-800 px-sm py-xs rounded-full text-[10px] font-bold uppercase tracking-wider">Top Performing</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container rounded overflow-hidden">
+<img alt="Post Thumbnail" class="w-full h-full object-cover" data-alt="A close-up shot of a diverse professional team collaborating in a bright, airy office with large windows. The mood is energetic and optimistic, with sunlight streaming across the desk. The image is stylized as a highly engaging Instagram reel cover, focused on human connection and modern work culture, maintaining the brand's premium and accessible visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbdrJbVIiXa4SCTcuy7fhHuRwqGjzQqBqIIYJlsa0khq6MHfk1DVma1P29q-nn1CMhMdLhMYahUOiB8V7BAXFozbi4sr2BIglujDlvVzzsuHuNfpKKOP3mQKyImNSBCZr0TxxOoXF1sNxH_SQgksneZU85msMxGhfnOrHFhK2n0FBgY6TJ2-N1MA-3-c0NaRrtOzn8b9tY7rBxlMjrdzG46hK1e2HGsSQu-Kx2S-bA_msNU_fdNgncF1FEdVP9BP4Z7jSexZyoVQfM"/>
+</div>
+<span class="font-body-md text-primary font-semibold">Team Spotlight: Behind the Scenes</span>
+</div>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-[#E1306C]" data-icon="camera_alt" style="font-variation-settings: 'FILL' 1;">camera_alt</span>
+<span class="text-body-md">Instagram</span>
+</div>
+</td>
+<td class="p-md font-label-bold text-primary">7.9%</td>
+<td class="p-md text-body-md">182,300</td>
+<td class="p-md text-body-md">3,450</td>
+<td class="p-md">
+<span class="bg-teal-100 text-teal-800 px-sm py-xs rounded-full text-[10px] font-bold uppercase tracking-wider">Top Performing</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</body></html>

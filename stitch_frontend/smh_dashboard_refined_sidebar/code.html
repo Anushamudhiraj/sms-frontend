@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SocialManager Pro - Handler Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#e6e2d8",
+                        "surface-container-high": "#e9e7eb",
+                        "secondary-container": "#e6e2d8",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e4e2e5",
+                        "on-background": "#1b1b1e",
+                        "on-secondary-fixed": "#1c1c16",
+                        "on-secondary-container": "#66645d",
+                        "on-primary-fixed-variant": "#364768",
+                        "primary": "#031635",
+                        "on-primary-fixed": "#081b3a",
+                        "secondary-fixed-dim": "#cac6bd",
+                        "on-primary-container": "#8293b8",
+                        "primary-container": "#1a2b4b",
+                        "surface-container": "#efedf0",
+                        "on-secondary-fixed-variant": "#484740",
+                        "outline-variant": "#c5c6cf",
+                        "on-tertiary-fixed": "#291800",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#b6c6ef",
+                        "on-surface-variant": "#44474e",
+                        "inverse-primary": "#b6c6ef",
+                        "tertiary-fixed": "#ffddb1",
+                        "tertiary-container": "#3e2700",
+                        "surface-dim": "#dbd9dc",
+                        "tertiary-fixed-dim": "#e8c08a",
+                        "surface-tint": "#4e5e81",
+                        "surface": "#fbf8fc",
+                        "surface-container-low": "#f5f3f6",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#303033",
+                        "on-surface": "#1b1b1e",
+                        "inverse-on-surface": "#f2f0f3",
+                        "surface-container-highest": "#e4e2e5",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fbf8fc",
+                        "on-tertiary-container": "#b08d5b",
+                        "secondary": "#605e57",
+                        "background": "#fbf8fc",
+                        "outline": "#75777f",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#231400",
+                        "on-tertiary-fixed-variant": "#5d4217",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#d8e2ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "lg": "24px",
+                        "container-padding": "24px",
+                        "xl": "32px",
+                        "gutter": "20px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "stat-lg": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "label-bold": ["Inter"],
+                        "headline-xl": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "stat-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-xl": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .sidebar-active {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #b6c6ef;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<!-- Navigation Drawer (SideNav) -->
+<aside class="w-[240px] h-full fixed left-0 top-0 bg-primary z-50 flex flex-col py-xl border-r border-outline-variant/10">
+<!-- New Bold Sidebar Header -->
+<div class="px-lg mb-lg">
+<h1 class="text-on-primary font-headline-xl tracking-tight">SMH Dashboard</h1>
+</div>
+<!-- Navigation Groups -->
+<nav class="flex-1 space-y-xl overflow-y-auto">
+<!-- Workspace -->
+<div>
+<p class="px-lg mb-sm text-on-primary-container font-label-bold opacity-50 uppercase tracking-widest text-[10px]">Workspace</p>
+<ul class="space-y-xs">
+<li>
+<a class="sidebar-active text-on-primary flex items-center gap-md px-lg py-md transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-bold">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-on-primary/5 flex items-center gap-md px-lg py-md transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-bold">Clients</span>
+</a>
+</li>
+<li>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-on-primary/5 flex items-center gap-md px-lg py-md transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="queue">queue</span>
+<span class="font-label-bold">Content queue</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Tools -->
+<div>
+<p class="px-lg mb-sm text-on-primary-container font-label-bold opacity-50 uppercase tracking-widest text-[10px]">Tools</p>
+<ul class="space-y-xs">
+<li>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-on-primary/5 flex items-center gap-md px-lg py-md transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-bold">Analytics</span>
+</a>
+</li>
+<li>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-on-primary/5 flex items-center gap-md px-lg py-md transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-bold">AI Caption Studio</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Admin -->
+<div>
+<p class="px-lg mb-sm text-on-primary-container font-label-bold opacity-50 uppercase tracking-widest text-[10px]">Admin</p>
+<ul class="space-y-xs">
+<li>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-on-primary/5 flex items-center gap-md px-lg py-md transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-bold">Settings</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Profile Meta -->
+<div class="mt-auto px-lg pt-lg border-t border-on-primary/10 flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary text-xs font-bold">SR</div>
+<div>
+<p class="text-on-primary font-label-bold text-[12px]">Sarah Rogers</p>
+<div class="flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
+<span class="text-on-primary-container text-[10px]">Online</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[240px] min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-240px)] z-40 bg-surface h-[80px] px-xl flex items-center justify-between border-b border-surface-variant">
+<div class="flex-1 max-w-2xl">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl pl-[48px] pr-lg py-md text-body-md focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-outline" placeholder="Search clients, posts, platforms..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-xl pl-xl">
+<div class="text-right hidden lg:block">
+<h1 class="font-headline-md text-on-surface">Handler overview</h1>
+<p class="text-on-surface-variant text-label-bold">All clients and platform activity — May 6, 2026</p>
+</div>
+<div class="h-10 w-[1px] bg-surface-variant"></div>
+<div class="flex items-center gap-lg">
+<button class="relative p-sm hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-[#FF914D] rounded-full border-2 border-surface"></span>
+</button>
+<div class="flex items-center gap-md cursor-pointer group">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold group-hover:ring-4 group-hover:ring-primary/10 transition-all">SR</div>
+<span class="material-symbols-outlined text-outline" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Body -->
+<div class="pt-[112px] px-xl pb-xl max-w-[1600px] mx-auto space-y-xl">
+<!-- Section 1: Top Level Analytics -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.03)] border border-surface-container-high">
+<div class="flex justify-between items-start mb-md">
+<p class="text-on-surface-variant font-label-bold">Active clients</p>
+<span class="p-xs bg-primary/5 rounded-lg text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="groups">groups</span>
+</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<span class="font-stat-lg text-on-background">8</span>
+<span class="text-emerald-600 font-label-bold text-xs flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                            12%
+                        </span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.03)] border border-surface-container-high">
+<div class="flex justify-between items-start mb-md">
+<p class="text-on-surface-variant font-label-bold">Posts published today</p>
+<span class="p-xs bg-primary/5 rounded-lg text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="send">send</span>
+</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<span class="font-stat-lg text-on-background">34</span>
+<span class="text-emerald-600 font-label-bold text-xs flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                            5%
+                        </span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.03)] border border-surface-container-high">
+<div class="flex justify-between items-start mb-md">
+<p class="text-on-surface-variant font-label-bold">Posts scheduled</p>
+<span class="p-xs bg-primary/5 rounded-lg text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="event">event</span>
+</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<span class="font-stat-lg text-on-background">47</span>
+<span class="text-emerald-600 font-label-bold text-xs flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="add">add</span>
+                            8
+                        </span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.03)] border border-surface-container-high">
+<div class="flex justify-between items-start mb-md">
+<p class="text-on-surface-variant font-label-bold">Total reach</p>
+<span class="p-xs bg-primary/5 rounded-lg text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<span class="font-stat-lg text-on-background">2.1M</span>
+<span class="text-emerald-600 font-label-bold text-xs flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                            24%
+                        </span>
+</div>
+</div>
+</section>
+<!-- Section 2: Publishing Analytics & Alerts -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Bar Chart (Mock) -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-lg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.03)] border border-surface-container-high">
+<div class="flex justify-between items-center mb-xl">
+<h2 class="font-headline-md text-on-surface">Posts published vs scheduled — last 7 days</h2>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-sm bg-primary"></span>
+<span class="text-label-bold text-on-surface-variant">Published</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-sm bg-primary-fixed-dim"></span>
+<span class="text-label-bold text-on-surface-variant">Scheduled</span>
+</div>
+</div>
+</div>
+<!-- Chart Placeholder Visual -->
+<div class="h-[240px] flex items-end justify-between px-md gap-sm">
+<div class="flex-1 flex flex-col justify-end gap-xs h-full">
+<div class="bg-primary-fixed-dim rounded-t w-full h-[30%]"></div>
+<div class="bg-primary rounded-t w-full h-[40%]"></div>
+<span class="text-[10px] text-center mt-xs text-outline uppercase font-bold">Mon</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-xs h-full">
+<div class="bg-primary-fixed-dim rounded-t w-full h-[45%]"></div>
+<div class="bg-primary rounded-t w-full h-[25%]"></div>
+<span class="text-[10px] text-center mt-xs text-outline uppercase font-bold">Tue</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-xs h-full">
+<div class="bg-primary-fixed-dim rounded-t w-full h-[20%]"></div>
+<div class="bg-primary rounded-t w-full h-[60%]"></div>
+<span class="text-[10px] text-center mt-xs text-outline uppercase font-bold">Wed</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-xs h-full">
+<div class="bg-primary-fixed-dim rounded-t w-full h-[55%]"></div>
+<div class="bg-primary rounded-t w-full h-[35%]"></div>
+<span class="text-[10px] text-center mt-xs text-outline uppercase font-bold">Thu</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-xs h-full">
+<div class="bg-primary-fixed-dim rounded-t w-full h-[40%]"></div>
+<div class="bg-primary rounded-t w-full h-[50%]"></div>
+<span class="text-[10px] text-center mt-xs text-outline uppercase font-bold">Fri</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-xs h-full">
+<div class="bg-primary-fixed-dim rounded-t w-full h-[15%]"></div>
+<div class="bg-primary rounded-t w-full h-[10%]"></div>
+<span class="text-[10px] text-center mt-xs text-outline uppercase font-bold">Sat</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-xs h-full">
+<div class="bg-primary-fixed-dim rounded-t w-full h-[25%]"></div>
+<div class="bg-primary rounded-t w-full h-[15%]"></div>
+<span class="text-[10px] text-center mt-xs text-outline uppercase font-bold">Sun</span>
+</div>
+</div>
+</div>
+<!-- Alerts & Notifications -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.03)] border border-surface-container-high">
+<h2 class="font-headline-md text-on-surface mb-lg">Alerts &amp; notifications</h2>
+<div class="space-y-md">
+<div class="p-md bg-orange-50 border-l-4 border-orange-400 rounded-lg flex gap-md items-start">
+<span class="material-symbols-outlined text-orange-600" data-icon="warning">warning</span>
+<div>
+<p class="text-body-md font-bold text-orange-900">API Token Expiring</p>
+<p class="text-xs text-orange-800">Instagram token for 'Luxe Hotels' expires in 2 days.</p>
+</div>
+</div>
+<div class="p-md bg-blue-50 border-l-4 border-blue-400 rounded-lg flex gap-md items-start">
+<span class="material-symbols-outlined text-blue-600" data-icon="info">info</span>
+<div>
+<p class="text-body-md font-bold text-blue-900">New Campaign</p>
+<p class="text-xs text-blue-800">'TechNova' added 12 new assets to the library.</p>
+</div>
+</div>
+<div class="p-md bg-emerald-50 border-l-4 border-emerald-400 rounded-lg flex gap-md items-start">
+<span class="material-symbols-outlined text-emerald-600" data-icon="check_circle">check_circle</span>
+<div>
+<p class="text-body-md font-bold text-emerald-900">Queue Cleared</p>
+<p class="text-xs text-emerald-800">All morning posts for 'Cafe Bloom' successfully out.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Client Roster -->
+<section class="bg-surface-container-lowest p-lg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.03)] border border-surface-container-high overflow-hidden">
+<div class="flex justify-between items-center mb-xl">
+<h2 class="font-headline-md text-on-surface">Client roster — platforms &amp; reach</h2>
+<a class="text-primary font-label-bold flex items-center gap-xs hover:underline" href="#">
+                        Manage clients
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-variant">
+<th class="pb-md font-label-bold text-outline uppercase tracking-wider text-[10px]">Client Name</th>
+<th class="pb-md font-label-bold text-outline uppercase tracking-wider text-[10px]">Plan</th>
+<th class="pb-md font-label-bold text-outline uppercase tracking-wider text-[10px]">Platforms</th>
+<th class="pb-md font-label-bold text-outline uppercase tracking-wider text-[10px]">Status</th>
+<th class="pb-md font-label-bold text-outline uppercase tracking-wider text-[10px]">Weekly Posts</th>
+<th class="pb-md"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant">
+<!-- Client Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high overflow-hidden">
+<img alt="Luxe Hotels Group" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujKwsanRkXbzZCQusaDz-_CSHISAe6etTFauis1hwR7LCfLX2w7FhlibgvuvJJD1YdbOEw06R_jz673DTK3i2mI1EmFKQtLcx3eIZRUN1To9apWENwOYyjOfm9PDG6x9yT2MwwRr_BW4rl8ILysYNoCbIo1_JiJV3QNItoX0-c8n8V_VBikY904NU-ZLWSAT_mZXVB-0YhIFngMIKZJCBNkaeY5EIepGlzWq7TkYpGDQNXUneW38oVKFC5mMgWRzH_lg7p0bRriG8s"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Luxe Hotels Group</p>
+<p class="text-xs text-outline">Hospitality &amp; Travel</p>
+</div>
+</div>
+</td>
+<td class="py-lg">
+<span class="px-sm py-xs bg-purple-100 text-purple-700 text-[10px] font-bold rounded uppercase">Enterprise</span>
+</td>
+<td class="py-lg">
+<div class="flex gap-xs">
+<div class="w-6 h-6 flex items-center justify-center bg-[#E1306C] rounded text-white"><span class="material-symbols-outlined text-[14px]" data-icon="camera">camera</span></div>
+<div class="w-6 h-6 flex items-center justify-center bg-[#1877F2] rounded text-white"><span class="material-symbols-outlined text-[14px]" data-icon="facebook">social_leaderboard</span></div>
+<div class="w-6 h-6 flex items-center justify-center bg-[#000000] rounded text-white"><span class="material-symbols-outlined text-[14px]" data-icon="close">close</span></div>
+</div>
+</td>
+<td class="py-lg">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-body-md text-emerald-700 font-bold">Active</span>
+</div>
+</td>
+<td class="py-lg font-bold text-on-surface">14 posts</td>
+<td class="py-lg text-right">
+<button class="p-sm text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Client Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high overflow-hidden">
+<img alt="TechNova Solutions" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uiyDTxLulY7CukQTwM8-mLnxlzTnvYp78oUmWUPR5uaFksQWMfwL70VtiAXNX1Uzv_mxHse1c8WC7hRBMvwF-1DE3f07HnEko_0OjSmydCstYlKTwezwb7_0ylf3nmseUbLWIHIhKbIwflmxmct8nAC048wtTXy0HhXMZ9X295R9JaiDpMNeOC-Ipfi2IavvXFEKobHqNIITZC-GE7ccMNboECUFRQG4mh_l17AFzBd3UkltNJ393TSv93buaRTE5EJ6wbYTjv2ByY"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">TechNova Solutions</p>
+<p class="text-xs text-outline">Software &amp; SaaS</p>
+</div>
+</div>
+</td>
+<td class="py-lg">
+<span class="px-sm py-xs bg-blue-100 text-blue-700 text-[10px] font-bold rounded uppercase">Pro</span>
+</td>
+<td class="py-lg">
+<div class="flex gap-xs">
+<div class="w-6 h-6 flex items-center justify-center bg-[#0077B5] rounded text-white"><span class="material-symbols-outlined text-[14px]" data-icon="work">work</span></div>
+<div class="w-6 h-6 flex items-center justify-center bg-[#000000] rounded text-white"><span class="material-symbols-outlined text-[14px]" data-icon="close">close</span></div>
+</div>
+</td>
+<td class="py-lg">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-orange-400"></span>
+<span class="text-body-md text-orange-700 font-bold">Under review</span>
+</div>
+</td>
+<td class="py-lg font-bold text-on-surface">8 posts</td>
+<td class="py-lg text-right">
+<button class="p-sm text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-xl flex items-center justify-between">
+<p class="text-xs text-outline">Showing 1 to 8 of 24 clients</p>
+<div class="flex items-center gap-xs">
+<button class="px-md py-sm border border-surface-variant rounded-lg text-label-bold text-outline hover:bg-surface-container transition-colors">Prev</button>
+<button class="w-10 h-10 bg-primary text-on-primary rounded-lg text-label-bold">1</button>
+<button class="w-10 h-10 hover:bg-surface-container rounded-lg text-label-bold text-outline transition-colors">2</button>
+<button class="w-10 h-10 hover:bg-surface-container rounded-lg text-label-bold text-outline transition-colors">3</button>
+<button class="px-md py-sm border border-surface-variant rounded-lg text-label-bold text-outline hover:bg-surface-container transition-colors">Next</button>
+</div>
+</div>
+</section>
+<!-- Section 4: Platform Reach Breakdown -->
+<section class="bg-surface-container-lowest p-lg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.03)] border border-surface-container-high">
+<div class="flex justify-between items-center mb-xl">
+<h2 class="font-headline-md text-on-surface">Platform reach breakdown — all clients</h2>
+<a class="text-primary font-label-bold flex items-center gap-xs hover:underline" href="#">
+                        Full analytics
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+<div class="space-y-lg">
+<!-- Instagram -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-[#E1306C]/10 text-[#E1306C] rounded-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="camera">camera</span>
+</div>
+<span class="font-bold text-on-surface">Instagram</span>
+</div>
+<span class="text-on-surface font-bold">264.3K</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<!-- Facebook -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-[#1877F2]/10 text-[#1877F2] rounded-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="facebook">social_leaderboard</span>
+</div>
+<span class="font-bold text-on-surface">Facebook</span>
+</div>
+<span class="text-on-surface font-bold">96.2K</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<!-- Twitter/X -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-black/10 text-black rounded-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</div>
+<span class="font-bold text-on-surface">Twitter / X</span>
+</div>
+<span class="text-on-surface font-bold">71.1K</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 32%"></div>
+</div>
+</div>
+</div>
+<div class="space-y-lg">
+<!-- LinkedIn -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-[#0077B5]/10 text-[#0077B5] rounded-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="work">work</span>
+</div>
+<span class="font-bold text-on-surface">LinkedIn</span>
+</div>
+<span class="text-on-surface font-bold">31.2K</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 18%"></div>
+</div>
+</div>
+<!-- Pinterest -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-[#BD081C]/10 text-[#BD081C] rounded-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="push_pin">push_pin</span>
+</div>
+<span class="font-bold text-on-surface">Pinterest</span>
+</div>
+<span class="text-on-surface font-bold">19.7K</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 12%"></div>
+</div>
+</div>
+<!-- Youtube -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-red-100 text-red-600 rounded-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="play_circle">play_circle</span>
+</div>
+<span class="font-bold text-on-surface">YouTube</span>
+</div>
+<span class="text-on-surface font-bold">8.4K</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 8%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

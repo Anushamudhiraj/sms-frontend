@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SocialManager Pro - Client Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Manrope:wght@600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b6c6ef",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#cac6bd",
+                        "on-primary": "#ffffff",
+                        "primary": "#031635",
+                        "on-primary-container": "#8293b8",
+                        "background": "#fbf8fc",
+                        "inverse-on-surface": "#f2f0f3",
+                        "on-secondary-fixed": "#1c1c16",
+                        "tertiary-fixed-dim": "#e8c08a",
+                        "on-tertiary-fixed": "#291800",
+                        "on-secondary-fixed-variant": "#484740",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container-low": "#f5f3f6",
+                        "secondary-container": "#e6e2d8",
+                        "on-primary-fixed-variant": "#364768",
+                        "tertiary": "#231400",
+                        "on-tertiary-fixed-variant": "#5d4217",
+                        "on-tertiary-container": "#b08d5b",
+                        "outline": "#75777f",
+                        "primary-container": "#1a2b4b",
+                        "on-secondary-container": "#66645d",
+                        "surface-bright": "#fbf8fc",
+                        "surface": "#fbf8fc",
+                        "on-background": "#1b1b1e",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1b1b1e",
+                        "on-primary-fixed": "#081b3a",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#303033",
+                        "surface-variant": "#e4e2e5",
+                        "surface-tint": "#4e5e81",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#44474e",
+                        "surface-container": "#efedf0",
+                        "tertiary-container": "#3e2700",
+                        "secondary-fixed": "#e6e2d8",
+                        "secondary": "#605e57",
+                        "surface-container-highest": "#e4e2e5",
+                        "surface-dim": "#dbd9dc",
+                        "primary-fixed-dim": "#b6c6ef",
+                        "outline-variant": "#c5c6cf",
+                        "tertiary-fixed": "#ffddb1",
+                        "surface-container-high": "#e9e7eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "unit": "4px",
+                        "xs": "4px",
+                        "container-padding": "24px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "gutter": "20px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Inter"],
+                        "headline-xl": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "stat-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-xl": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "stat-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fbf8fc;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Top AppBar (Mobile context) -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-surface border-b border-surface-variant h-[64px] flex justify-between items-center px-lg">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer p-sm rounded-full hover:bg-surface-container" data-icon="menu">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Dashboard</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a social media manager in a brightly lit, modern studio setting. The lighting is soft and flattering, creating a clean light-mode aesthetic that fits a high-end corporate environment. The background is a blurred minimalist office with subtle blue and cream tones, emphasizing organized efficiency and professional reliability." src="https://lh3.googleusercontent.com/aida/ADBb0ujLIo2tXXOSmsvcPByJg4RmDdJCtaUS19xFpDcM1D4WOF_6fK-e8zAAdFwr5OQa3PBM9aItSY9ZihrjEaTVHYf6H1H9Fw22UqTZvTIrpo5BWGiwuoPg_y0G7bxp5CXAEwCy9k9_0exfDPZUOtFuBVcyB4awS2IaSxQYNwMJUVuP58AGaCGvewf0GhQ2ejmDOAZQi8JXHln78s3kRuLLi14nKKbRPC6qvyf_IIlE131rW_KrgQjdSi1bDxOGYTKHG12YjfTreIisozA"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[80px] pb-[100px] px-md">
+<!-- Welcome Section -->
+<section class="mb-xl">
+<h2 class="font-headline-xl text-headline-xl text-on-background mb-xs">Welcome back, Sarah</h2>
+<p class="font-body-md text-on-surface-variant">Your agency performance is up 12% this week.</p>
+</section>
+<!-- Metrics Bento Grid -->
+<section class="grid grid-cols-2 gap-md mb-xl">
+<!-- Posts this month -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.03)] border border-surface-variant/50">
+<span class="material-symbols-outlined text-primary mb-sm" data-icon="edit_square">edit_square</span>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase">Posts this month</p>
+<p class="font-stat-lg text-stat-lg text-primary">24</p>
+<div class="flex items-center gap-xs mt-xs text-teal-600">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span class="text-[12px] font-bold">+4.2%</span>
+</div>
+</div>
+<!-- Total Likes -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.03)] border border-surface-variant/50">
+<span class="material-symbols-outlined text-error mb-sm" data-icon="favorite">favorite</span>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase">Total likes</p>
+<p class="font-stat-lg text-stat-lg text-primary">12.8k</p>
+<div class="flex items-center gap-xs mt-xs text-teal-600">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span class="text-[12px] font-bold">+8.1%</span>
+</div>
+</div>
+<!-- Total Reach -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.03)] border border-surface-variant/50">
+<span class="material-symbols-outlined text-on-tertiary-container mb-sm" data-icon="groups">groups</span>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase">Total reach</p>
+<p class="font-stat-lg text-stat-lg text-primary">45.2k</p>
+<div class="flex items-center gap-xs mt-xs text-error">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_down">trending_down</span>
+<span class="text-[12px] font-bold">-1.4%</span>
+</div>
+</div>
+<!-- Scheduled Posts -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.03)] border border-surface-variant/50">
+<span class="material-symbols-outlined text-primary-container mb-sm" data-icon="calendar_today">calendar_today</span>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase">Scheduled</p>
+<p class="font-stat-lg text-stat-lg text-primary">8</p>
+<div class="flex items-center gap-xs mt-xs text-on-surface-variant">
+<span class="text-[12px] font-bold">Next in 2h</span>
+</div>
+</div>
+</section>
+<!-- Connected Platforms Section -->
+<section class="mb-xl">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md text-primary">Connected Platforms</h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="add_circle">add_circle</span>
+</div>
+<div class="flex gap-md overflow-x-auto pb-sm no-scrollbar">
+<!-- Instagram -->
+<div class="flex-shrink-0 bg-surface-container-lowest px-lg py-md rounded-lg border border-surface-variant flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-teal-500"></div>
+<span class="font-label-bold text-label-bold text-on-surface">Instagram</span>
+</div>
+<!-- Facebook -->
+<div class="flex-shrink-0 bg-surface-container-lowest px-lg py-md rounded-lg border border-surface-variant flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-teal-500"></div>
+<span class="font-label-bold text-label-bold text-on-surface">Facebook</span>
+</div>
+<!-- Twitter/X -->
+<div class="flex-shrink-0 bg-surface-container-lowest px-lg py-md rounded-lg border border-surface-variant flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-teal-500"></div>
+<span class="font-label-bold text-label-bold text-on-surface">Twitter/X</span>
+</div>
+<!-- LinkedIn -->
+<div class="flex-shrink-0 bg-surface-container-lowest px-lg py-md rounded-lg border border-surface-variant flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-orange-400"></div>
+<span class="font-label-bold text-label-bold text-on-surface text-opacity-70">LinkedIn</span>
+</div>
+</div>
+</section>
+<!-- Recent & Scheduled Posts List -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md text-primary">Recent &amp; Scheduled</h3>
+<button class="text-primary font-label-bold">View all</button>
+</div>
+<div class="space-y-md">
+<!-- Post Item 1 (Scheduled) -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-surface-variant flex gap-md">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Post content" class="w-full h-full object-cover" data-alt="A vibrant and professional lifestyle photograph showcasing a minimalist coffee shop interior. The image is bright with high-key lighting, featuring a palette of soft creams, deep navy accents, and natural wood textures. The atmosphere is calm and productive, perfectly aligned with a social media management agency's aesthetic for high-quality scheduled content." src="https://lh3.googleusercontent.com/aida/ADBb0ujKwsanRkXbzZCQusaDz-_CSHISAe6etTFauis1hwR7LCfLX2w7FhlibgvuvJJD1YdbOEw06R_jz673DTK3i2mI1EmFKQtLcx3eIZRUN1To9apWENwOYyjOfm9PDG6x9yT2MwwRr_BW4rl8ILysYNoCbIo1_JiJV3QNItoX0-c8n8V_VBikY904NU-ZLWSAT_mZXVB-0YhIFngMIKZJCBNkaeY5EIepGlzWq7TkYpGDQNXUneW38oVKFC5mMgWRzH_lg7p0bRriG8s"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-[18px] text-[#E4405F]" data-icon="photo_camera">photo_camera</span>
+<span class="bg-orange-100 text-orange-700 text-[10px] font-bold px-sm py-xs rounded uppercase">Scheduled</span>
+</div>
+<p class="text-body-md font-body-md line-clamp-1 mt-xs">Maximize your engagement with these 5 simple tips for 2024...</p>
+</div>
+<p class="text-[11px] text-on-surface-variant font-label-bold">Tomorrow, 10:00 AM</p>
+</div>
+</div>
+<!-- Post Item 2 (Published) -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-surface-variant flex gap-md">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Post content" class="w-full h-full object-cover" data-alt="Close-up macro photography of high-end tech gadgets on a pristine white desk. The lighting is crisp and modern, emphasizing the premium quality of the equipment. The color story includes deep navy and soft metallic tones, conveying a sense of cutting-edge social media management and sophisticated digital strategy execution." src="https://lh3.googleusercontent.com/aida/ADBb0uiyDTxLulY7CukQTwM8-mLnxlzTnvYp78oUmWUPR5uaFksQWMfwL70VtiAXNX1Uzv_mxHse1c8WC7hRBMvwF-1DE3f07HnEko_0OjSmydCstYlKTwezwb7_0ylf3nmseUbLWIHIhKbIwflmxmct8nAC048wtTXy0HhXMZ9X295R9JaiDpMNeOC-Ipfi2IavvXFEKobHqNIITZC-GE7ccMNboECUFRQG4mh_l17AFzBd3UkltNJ393TSv93buaRTE5EJ6wbYTjv2ByY"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-[18px] text-[#1877F2]" data-icon="thumb_up">thumb_up</span>
+<span class="bg-teal-100 text-teal-700 text-[10px] font-bold px-sm py-xs rounded uppercase">Published</span>
+</div>
+<p class="text-body-md font-body-md line-clamp-1 mt-xs">We just reached a major milestone! 10k followers and counting...</p>
+</div>
+<div class="flex items-center gap-md">
+<span class="text-[11px] text-on-surface-variant font-label-bold">2 hours ago</span>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant" data-icon="favorite">favorite</span>
+<span class="text-[11px] text-on-surface-variant">452</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Post Item 3 (Published) -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-surface-variant flex gap-md">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Post content" class="w-full h-full object-cover" data-alt="An abstract digital background with soft, flowing waves in shades of deep navy blue and off-white. The visual style is elegant and corporate-modern, utilizing a minimalist approach to depth and texture. The mood is serene and professional, designed to sit quietly behind analytical data while maintaining brand cohesion." src="https://lh3.googleusercontent.com/aida/ADBb0ugqfWogcGLE4ojN81MmozfsXsQdbJEltA9F6c0fQnKtQ0IVSCdECvH93geqtGoZQdvHRSRXS3vVaauBPaTKnGGOMfvx6hR8-SbaDWxXKk8aoLMzFR-QQIhq-sc-PZf6bxOqMiTB0lNKASZFJqGjVKgWcz5pfrS_2cvtQs9KNljNnApETKpM7Xvit5DHIutTvro1BOrdVo9ldEn3jOgMn92J2wqn_YYlL54tkdRLOmQ2PcNuwpnCDQhMSzIk8a4FQHE0NtM-ZiyHvzE"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-[18px] text-[#1DA1F2]" data-icon="quickreply">quickreply</span>
+<span class="bg-teal-100 text-teal-700 text-[10px] font-bold px-sm py-xs rounded uppercase">Published</span>
+</div>
+<p class="text-body-md font-body-md line-clamp-1 mt-xs">New blog post: Why micro-influencers are the future of retail...</p>
+</div>
+<div class="flex items-center gap-md">
+<span class="text-[11px] text-on-surface-variant font-label-bold">Yesterday</span>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant" data-icon="repeat">repeat</span>
+<span class="text-[11px] text-on-surface-variant">24</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-[88px] right-lg bg-primary text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-surface border-t border-surface-variant/20 h-[72px] flex items-center justify-around px-md z-50">
+<!-- Dashboard (Active) -->
+<div class="flex flex-col items-center gap-xs text-primary">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-bold text-label-bold">Dashboard</span>
+</div>
+<!-- Clients -->
+<div class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-bold text-label-bold">Clients</span>
+</div>
+<!-- Schedule -->
+<div class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-bold text-label-bold">Schedule</span>
+</div>
+<!-- Analytics -->
+<div class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-bold text-label-bold">Analytics</span>
+</div>
+<!-- Settings -->
+<div class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-bold text-label-bold">Settings</span>
+</div>
+</nav>
+</body></html>
