@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
+import SignUp from './pages/Signup';
 import ClientDashboard from './pages/ClientDashboard';
 import ClientAnalytics from './pages/ClientAnalytics';
 import ClientScheduler from './pages/ClientScheduler';

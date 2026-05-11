@@ -1,134 +1,258 @@
-import { Link } from 'react-router-dom';
+import axios from "axios";
+import React, { useState } from "react";
 
-export default function SignIn() {
+import {
+  Link,
+  useNavigate,
+} from "react-router-dom";
+
+export default function LoginPage() {
+
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [loginError, setLoginError] = useState("");
+
+  // Handle Input Change
+  const handleChange = (e) => {
+
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
+
+    setLoginError("");
+  };
+
+  // Validate Form
+  const validateForm = () => {
+
+    let newErrors = {};
+
+    // Email Validation
+    if (!formData.email.trim()) {
+
+      newErrors.email = "Email is required";
+
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
+        formData.email
+      )
+    ) {
+
+      newErrors.email =
+        "Enter a valid email address";
+
+    }
+
+    // Password Validation
+    if (!formData.password) {
+
+      newErrors.password =
+        "Password is required";
+
+    } else if (
+      formData.password.length < 3
+    ) {
+
+      newErrors.password =
+        "Password must be at least 3 characters";
+
+    }
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Handle Submit
+  const handleSubmit = async (e) => {
+
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    try {
+
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/login/",
+        {
+          email: formData.email,
+          password: formData.password,
+        }
+      );
+
+      const data = response.data;
+
+      console.log(data);
+
+      // Store user data
+      localStorage.setItem(
+        "user",
+        JSON.stringify(data)
+      );
+
+      // Redirect based on role
+      if (data.role === "CLIENT") {
+
+        navigate("/dashboard");
+
+      }
+
+      else if (data.role === "SMH") {
+
+        navigate("/smh-dashboard");
+
+      }
+
+      else {
+
+        setLoginError(
+          "Unknown user role"
+        );
+
+      }
+
+    }
+
+    catch (error) {
+
+      console.log(error);
+
+      setLoginError(
+        error.response?.data?.error ||
+        "Login failed"
+      );
+
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center p-lg font-body-md text-body-md bg-background">
-      <main className="w-full max-w-[400px] flex flex-col gap-xl">
-        {/* Header / Logo Area */}
-        <div className="flex flex-col items-center text-center gap-sm">
-          <div className="w-16 h-16 rounded-xl bg-primary flex items-center justify-center mb-md shadow-lg">
-            <span className="material-symbols-outlined text-on-primary text-[32px]">dashboard</span>
-          </div>
-          <h1 className="font-headline-xl text-headline-xl text-primary tracking-tight">SocialManager Pro</h1>
-          <p className="font-body-md text-body-md text-on-surface-variant">Sign in to manage your agency accounts</p>
+    <div className="min-h-screen bg-[#fbf8fc] flex items-center justify-center px-4 py-6 relative overflow-hidden">
+
+      {/* Background Pattern */}
+      <div className="absolute inset-0 -z-10 opacity-30 bg-[radial-gradient(#e4e2e5_1px,transparent_1px)] [background-size:32px_32px]" />
+
+      {/* Card */}
+      <div className="w-full max-w-[440px] bg-white border border-gray-200 rounded-2xl shadow-sm p-6 sm:p-8">
+
+        {/* Heading */}
+        <div className="mb-8">
+          <h1 className="text-[28px] font-bold text-[#031635]">
+            Sign In
+          </h1>
         </div>
 
-        {/* Sign-In Card */}
-        <div className="bg-surface-container-lowest login-card-shadow rounded-xl p-lg border border-surface-variant/50">
-          <form className="flex flex-col gap-lg" onSubmit={(e) => e.preventDefault()}>
-            {/* Email Field */}
-            <div className="flex flex-col gap-xs">
-              <label className="font-label-bold text-label-bold text-on-surface ml-xs" htmlFor="email">
-                Email Address
-              </label>
-              <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-md flex items-center pointer-events-none">
-                  <span className="material-symbols-outlined text-outline text-[20px]">mail</span>
-                </div>
-                <input
-                  className="w-full pl-[44px] pr-md py-md bg-surface border border-outline-variant rounded-lg font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline/60"
-                  id="email"
-                  name="email"
-                  placeholder="name@agency.com"
-                  type="email"
-                />
-              </div>
-            </div>
+        {/* Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-6"
+        >
 
-            {/* Password Field */}
-            <div className="flex flex-col gap-xs">
-              <div className="flex justify-between items-center px-xs">
-                <label className="font-label-bold text-label-bold text-on-surface" htmlFor="password">
-                  Password
-                </label>
-                <a className="font-label-bold text-label-bold text-primary hover:underline text-xs" href="#">
-                  Forgot?
-                </a>
-              </div>
-              <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-md flex items-center pointer-events-none">
-                  <span className="material-symbols-outlined text-outline text-[20px]">lock</span>
-                </div>
-                <input
-                  className="w-full pl-[44px] pr-[44px] py-md bg-surface border border-outline-variant rounded-lg font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline/60"
-                  id="password"
-                  name="password"
-                  placeholder="Enter your password"
-                  type="password"
-                />
-                <button
-                  className="absolute inset-y-0 right-0 pr-md flex items-center text-outline hover:text-on-surface"
-                  type="button"
-                >
-                  <span className="material-symbols-outlined text-[20px]">visibility</span>
-                </button>
-              </div>
-            </div>
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-600 mb-2">
+              Email
+            </label>
 
-            {/* Remember Me */}
-            <div className="flex items-center gap-sm px-xs">
-              <input
-                className="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer"
-                id="remember"
-                type="checkbox"
-              />
-              <label className="font-body-md text-body-md text-on-surface-variant cursor-pointer" htmlFor="remember">
-                Stay signed in for 30 days
-              </label>
-            </div>
+            <input
+              type="email"
+              name="email"
+              placeholder="name@company.com"
+              value={formData.email}
+              onChange={handleChange}
+              className={`w-full h-12 px-4 rounded-xl border bg-white outline-none transition
+              ${
+                errors.email
+                  ? "border-red-500"
+                  : "border-gray-300 focus:border-[#031635]"
+              }`}
+            />
 
-            {/* Submit Button */}
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email}
+              </p>
+            )}
+          </div>
+
+          {/* Password */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-600 mb-2">
+              Password
+            </label>
+
+            <input
+              type="password"
+              name="password"
+              placeholder="••••••••"
+              value={formData.password}
+              onChange={handleChange}
+              className={`w-full h-12 px-4 rounded-xl border bg-white outline-none transition
+              ${
+                errors.password
+                  ? "border-red-500"
+                  : "border-gray-300 focus:border-[#031635]"
+              }`}
+            />
+
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password}
+              </p>
+            )}
+          </div>
+
+          {/* Invalid Credentials */}
+          {loginError && (
+            <div className="bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-3 rounded-xl">
+              {loginError}
+            </div>
+          )}
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full h-12 bg-[#031635] text-white rounded-xl font-semibold text-base hover:opacity-95 active:scale-[0.98] transition"
+          >
+            Sign In
+          </button>
+        </form>
+
+        {/* Footer */}
+        <div className="mt-8 text-center border-t border-gray-100 pt-6">
+          <p className="text-sm text-gray-500">
+            Don’t have an account?{" "}
+
             <Link
-              to="/dashboard"
-              className="w-full bg-primary text-on-primary py-md rounded-lg font-label-bold text-body-lg hover:bg-primary-container transition-colors shadow-sm active:scale-[0.98] text-center"
+              to="/sign-up"
+              className="text-[#031635] font-semibold hover:underline"
             >
-              Sign In
-            </Link>
-          </form>
-
-          {/* Social Provider Splitter */}
-          <div className="relative my-xl flex items-center">
-            <div className="flex-grow border-t border-outline-variant"></div>
-            <span className="flex-shrink mx-md font-label-bold text-label-bold text-outline uppercase tracking-widest text-[10px]">
-              or continue with
-            </span>
-            <div className="flex-grow border-t border-outline-variant"></div>
-          </div>
-
-          {/* Social Buttons */}
-          <div className="grid grid-cols-2 gap-md">
-            <button className="flex items-center justify-center gap-sm py-md border border-outline-variant rounded-lg bg-surface hover:bg-surface-container-low transition-colors">
-              <img
-                className="w-5 h-5 object-contain"
-                alt="Google logo"
-                src="https://lh3.googleusercontent.com/aida/ADBb0ujLIo2tXXOSmsvcPByJg4RmDdJCtaUS19xFpDcM1D4WOF_6fK-e8zAAdFwr5OQa3PBM9aItSY9ZihrjEaTVHYf6H1H9Fw22UqTZvTIrpo5BWGiwuoPg_y0G7bxp5CXAEwCy9k9_0exfDPZUOtFuBVcyB4awS2IaSxQYNwMJUVuP58AGaCGvewf0GhQ2ejmDOAZQi8JXHln78s3kRuLLi14nKKbRPC6qvyf_IIlE131rW_KrgQjdSi1bDxOGYTKHG12YjfTreIisozA"
-              />
-              <span className="font-label-bold text-label-bold text-on-surface">Google</span>
-            </button>
-            <button className="flex items-center justify-center gap-sm py-md border border-outline-variant rounded-lg bg-surface hover:bg-surface-container-low transition-colors">
-              <span className="material-symbols-outlined text-[20px] text-on-surface">account_circle</span>
-              <span className="font-label-bold text-label-bold text-on-surface">Apple</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Footer Links */}
-        <div className="text-center">
-          <p className="font-body-md text-body-md text-on-surface-variant">
-            Don't have an agency account?
-            <Link className="font-label-bold text-label-bold text-primary hover:underline ml-xs" to="/sign-up">
               Sign Up
             </Link>
+
           </p>
         </div>
-      </main>
+      </div>
 
-      {/* Decorative Background Element */}
-      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-64 -z-10 opacity-10 pointer-events-none">
+      {/* Decorative Image */}
+      <div className="hidden lg:block fixed -bottom-10 -right-10 opacity-10">
         <img
-          className="w-full h-full object-cover"
-          alt="Decorative background"
-          src="https://lh3.googleusercontent.com/aida/ADBb0ujKwsanRkXbzZCQusaDz-_CSHISAe6etTFauis1hwR7LCfLX2w7FhlibgvuvJJD1YdbOEw06R_jz673DTK3i2mI1EmFKQtLcx3eIZRUN1To9apWENwOYyjOfm9PDG6x9yT2MwwRr_BW4rl8ILysYNoCbIo1_JiJV3QNItoX0-c8n8V_VBikY904NU-ZLWSAT_mZXVB-0YhIFngMIKZJCBNkaeY5EIepGlzWq7TkYpGDQNXUneW38oVKFC5mMgWRzH_lg7p0bRriG8s"
+          src="https://lh3.googleusercontent.com/aida/ADBb0ujLIo2tXXOSmsvcPByJg4RmDdJCtaUS19xFpDcM1D4WOF_6fK-e8zAAdFwr5OQa3PBM9aItSY9ZihrjEaTVHYf6H1H9Fw22UqTZvTIrpo5BWGiwuoPg_y0G7bxp5CXAEwCy9k9_0exfDPZUOtFuBVcyB4awS2IaSxQYNwMJUVuP58AGaCGvewf0GhQ2ejmDOAZQi8JXHln78s3kRuLLi14nKKbRPC6qvyf_IIlE131rW_KrgQjdSi1bDxOGYTKHG12YjfTreIisozA"
+          alt="Decorative"
+          className="w-64 h-auto grayscale rotate-12"
         />
       </div>
     </div>
