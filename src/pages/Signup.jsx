@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
-
 import {
   Link,
   useNavigate,
 } from "react-router-dom";
+import { signup } from "../services/authService";
 
 const platforms = [
   {
@@ -301,17 +300,14 @@ export default function SignupPage() {
 
     try {
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/signup/",
-        {
-          fullname: formData.fullname,
-          email: formData.email,
-          password: formData.password,
-          platforms: formData.platforms,
-        }
-      );
+      const response = await signup({
+        fullname: formData.fullname,
+        email: formData.email,
+        password: formData.password,
+        platforms: formData.platforms,
+      });
 
-      console.log(response.data);
+      console.log(response);
 
       // Success Message
       setSuccessMessage(
@@ -338,7 +334,7 @@ export default function SignupPage() {
       console.log(error);
 
       if (
-        error.response?.data?.error ===
+        error.payload?.error ===
         "Email already exists"
       ) {
 
@@ -351,7 +347,8 @@ export default function SignupPage() {
       else {
 
         setServerError(
-          error.response?.data?.error ||
+          error.payload?.error ||
+          error.message ||
           "Signup failed"
         );
 

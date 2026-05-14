@@ -1,10 +1,10 @@
-import axios from "axios";
 import React, { useState } from "react";
 
 import {
   Link,
   useNavigate,
 } from "react-router-dom";
+import { login } from "../services/authService";
 
 export default function LoginPage() {
 
@@ -86,15 +86,10 @@ export default function LoginPage() {
 
     try {
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/login/",
-        {
-          email: formData.email,
-          password: formData.password,
-        }
-      );
-
-      const data = response.data;
+      const data = await login({
+        email: formData.email,
+        password: formData.password,
+      });
 
       console.log(data);
 
@@ -132,7 +127,8 @@ export default function LoginPage() {
       console.log(error);
 
       setLoginError(
-        error.response?.data?.error ||
+        error.payload?.error ||
+        error.message ||
         "Login failed"
       );
 

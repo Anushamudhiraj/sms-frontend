@@ -12,6 +12,7 @@ import SMHContentQueue from './pages/SMHContentQueue';
 import SMHAIStudio from './pages/SMHAIStudio';
 import SMHSettings from './pages/SMHSettings';
 import ClientSettings from './pages/ClientSettings';
+import OAuthCallback from './pages/OAuthCallback';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/analytics" element={<ClientAnalytics />} />
         <Route path="/scheduler" element={<ClientScheduler />} />
         <Route path="/settings" element={<ClientSettings />} />
+        <Route path="/oauth/callback" element={<OAuthCallback />} />
         
         {/* SMH Portal Flow (Accessible via URL) */}
         <Route path="/smh-dashboard" element={<SMHDashboard />} />
